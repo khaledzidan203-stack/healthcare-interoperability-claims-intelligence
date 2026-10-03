@@ -74,13 +74,15 @@ Final source auditor: **PASS**, exit 0, zero failing checks. It ran **94/94 pipe
 
 The optional `--pbir` audit returned exit 1 with static PASS and PBIR BLOCKED; this is the expected fail-closed local gate when execution policy rejects the normal launcher. No remote-schema warning was generated in this attempt because the validator never ran.
 
-CI is defined but has not executed on GitHub; no hosted success badge is claimed. Its exact Python audit command passes locally, but Linux/hosted execution has not been independently exercised. Git has been initialized on `main`. Actual Git ignore probes and candidate-set parity pass for all 266 public candidates; final staging/commit/remote verification follows the sequence in the publication plan. MIT licensing is authorized and present, with separate third-party notices.
+GitHub Actions **PASS**: [run 37140006407](https://github.com/khaledzidan203-stack/healthcare-interoperability-claims-intelligence/actions/runs/37140006407) ran the source auditor successfully on Ubuntu/Python 3.13 for initial commit `0322bb2f56290a875d32c69628a7662b1b4e438e`. This includes the 94 pipeline and seven auditor tests. Later documentation commits are separately validated by the [live workflow](https://github.com/khaledzidan203-stack/healthcare-interoperability-claims-intelligence/actions/workflows/ci.yml); the release process requires green CI at the exact tag target.
 
-**LOCAL PUBLICATION GATES: PASS. Remote publication and hosted CI verification are in progress.**
+Git is initialized on `main`, with **266 tracked public files**. Actual ignore probes, inventory parity and index-mode/blob comparisons pass. Staged bytes match the scanned working tree, including every protected baseline hash. MIT licensing and separate third-party notices are present.
 
-`READY_FOR_GITHUB_PUBLICATION=NO`
+**RELEASE VALIDATION STATUS: PASS - preserved runtime evidence, fresh source/index checks and successful hosted CI.**
 
-The owner explicitly authorized Git initialization, public repository creation under `khaledzidan203-stack`, pushing, CI remediation, tagging and the v1.0.0 release. Remaining execution gates are actual Git inclusion/index checks and hosted/remote verification. The active account was independently confirmed; the target repository was absent before creation. See [checklist](RELEASE_CHECKLIST.md) and [publication plan](PUBLICATION_PLAN.md).
+`READY_FOR_GITHUB_PUBLICATION=YES`
+
+The owner explicitly authorized Git initialization, public repository creation under `khaledzidan203-stack`, pushing, CI remediation, tagging and the v1.0.0 release. The active account was independently confirmed; the target repository was absent before creation. Git inclusion/index checks and initial hosted/remote verification passed. Final tag and release metadata are verified after the last documentation commit; consult the actual GitHub release for its immutable commit target. See [checklist](RELEASE_CHECKLIST.md) and [publication plan](PUBLICATION_PLAN.md).
 
 
 ## Publication inventory delta
@@ -91,3 +93,14 @@ The original 261 candidates increase to **266**: `LICENSE`, `THIRD_PARTY_NOTICES
 ## Release-only portability correction
 
 Real Git inspection found Windows text-mode stdin translated newline-delimited ignore probes to CRLF, causing Git to interpret carriage returns as part of filenames. The auditor now uses NUL-delimited binary input/output with `git check-ignore -z --stdin`. The existing boundary test also verifies actual Git results when a repository is present. All 94 pipeline and seven auditor tests pass; no validated pipeline or Power BI source changed.
+
+
+## Remote publication evidence
+
+- [Repository](https://github.com/khaledzidan203-stack/healthcare-interoperability-claims-intelligence): owner `khaledzidan203-stack`, public, default branch `main`, requested description and 19 factual topics.
+- Initial push succeeded; remote recursive tree contains exactly the 266 paths and Git blob IDs from the audited local commit. This establishes that no excluded runtime/credential artifact appeared remotely. Empty `.gitkeep` placeholders are the only public entries under local runtime/log directories.
+- GitHub's rendered README HTML was inspected: headings, documentation links and seven screenshot references are present. All seven PNGs fetched from GitHub match the preserved SHA-256 values. Primary relative destinations are verified against the same remote tree.
+- LICENSE, SECURITY, THIRD_PARTY_NOTICES and setup documentation are present remotely; source references are exactly the approved six files.
+- Browser inventory was empty, so this is server-rendered HTML/API verification, not a new browser visual-layout session. The original screenshot visual review remains preserved evidence.
+- The original hosted workflow passed without CI failures. The only portability fix was the pre-push Windows Git stdin correction documented above.
+- [v1.0.0 release notes](RELEASE_NOTES_v1.0.0.md) explicitly retain the synthetic-data, financial, terminology, Coverage and runtime-evidence limits. The annotated tag/release are created only after final clean-tree and matching-main checks.

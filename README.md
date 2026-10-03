@@ -1,5 +1,7 @@
 # Healthcare Interoperability & Claims Intelligence Platform
 
+[![Source release checks](https://github.com/khaledzidan203-stack/healthcare-interoperability-claims-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/khaledzidan203-stack/healthcare-interoperability-claims-intelligence/actions/workflows/ci.yml)
+
 A production-style healthcare interoperability and claims analytics engineering portfolio project using **CMS Blue Button sandbox/synthetic FHIR data**.
 
 The engineering objective is to turn nested claims resources into traceable analytical facts while preserving source meaning, run identity and uncertainty. The result connects a standard-library Python pipeline, PostgreSQL analytical model and source-controlled Power BI application. It demonstrates engineering practice without production, clinical or financial-outcome claims.

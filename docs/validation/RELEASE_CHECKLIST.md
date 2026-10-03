@@ -13,8 +13,8 @@ Status: RELEASE. Review date: 2026-10-03. Source PASS is not publication approva
 - [x] Carry forward owner-attested PBIR validation after proving complete baseline byte identity; preserve `PBIR_SCHEMA_UNREACHABLE` and document that fresh rerun is blocked by policy.
 - [x] Carry forward the owner-approved Desktop baseline after verifying all report/model source and screenshots unchanged; no fresh Desktop session claimed.
 - [x] Owner selected MIT; LICENSE and separate third-party notices are present.
-- [ ] After local gates pass, initialize Git, verify actual ignore behavior, inspect staged files and re-run audit.
-- [ ] Run GitHub Actions after authorized push; workflow presence is not hosted PASS.
+- [x] Initialize main, verify actual ignore behavior, inspect all 266 staged paths and blob bytes, and re-run audit.
+- [x] Authorized push and hosted source CI passed: run 37140006407. Final tag target must also have green CI.
 - [x] Owner explicitly authorized public repository creation, push, CI fixes, tagging and GitHub Release under the specified account.
 
-No database mutation or security-control bypass is part of these gates. If private data cannot be recounted, retain the screenshot qualification. The inclusion inventory is a projection until checked with actual Git.
+No database mutation or security-control bypass is part of these gates. If private data cannot be recounted, retain the screenshot qualification. The inclusion inventory has been checked against actual Git and the remote tree. The final tag/release process requires a clean worktree, matching local/remote main and a green run for the exact tag target.
