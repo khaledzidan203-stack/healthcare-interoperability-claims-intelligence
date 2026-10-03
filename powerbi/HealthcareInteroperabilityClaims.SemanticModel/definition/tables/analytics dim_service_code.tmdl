@@ -1,0 +1,80 @@
+table 'analytics dim_service_code'
+	lineageTag: 7595f2e4-a7e7-4cbe-94e7-78b922b5ec1f
+
+	column service_code_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 287644f9-b549-412a-98c0-857888c1660d
+		summarizeBy: none
+		sourceColumn: service_code_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column system_uri
+		dataType: string
+		lineageTag: d7cb1805-ed59-441f-bf1d-0526f54be17e
+		summarizeBy: none
+		sourceColumn: system_uri
+
+		annotation SummarizationSetBy = Automatic
+
+	column code
+		dataType: string
+		lineageTag: c87c57ca-275a-47c9-be8f-3c34a24f371f
+		summarizeBy: none
+		sourceColumn: code
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_display
+		dataType: string
+		lineageTag: af493d8c-7059-4f6b-95a1-25b6ab799277
+		summarizeBy: none
+		sourceColumn: source_display
+
+		annotation SummarizationSetBy = Automatic
+
+	column authoritative_display
+		dataType: string
+		lineageTag: c40793cd-bbd3-4320-9849-a581ac00d9a2
+		summarizeBy: none
+		sourceColumn: authoritative_display
+
+		annotation SummarizationSetBy = Automatic
+
+	column mapping_status
+		dataType: string
+		lineageTag: 3bd21185-3ecc-4478-91ff-4da596e3a029
+		summarizeBy: none
+		sourceColumn: mapping_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column authority
+		dataType: string
+		lineageTag: 7ad20930-08a8-4b86-9017-09c78717ceef
+		summarizeBy: none
+		sourceColumn: authority
+
+		annotation SummarizationSetBy = Automatic
+
+	column authority_version
+		dataType: string
+		lineageTag: 4ad55e74-b2a4-4aca-8d88-8a40a60e7f4d
+		summarizeBy: none
+		sourceColumn: authority_version
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics dim_service_code' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_dim_service_code = Source{[Schema="analytics",Item="dim_service_code"]}[Data]
+				in
+				    analytics_dim_service_code
+
+	annotation PBI_ResultType = Table
+

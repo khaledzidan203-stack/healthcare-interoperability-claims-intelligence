@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "363f4c4b16ab4c25de1d",
+  "displayName": "Clinical & Coding",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920
+}

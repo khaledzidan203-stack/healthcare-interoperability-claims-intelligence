@@ -1,0 +1,4 @@
+# Preserve the validated bytes in commits and clean checkouts on every OS.
+# In particular, do not normalize the original PBIR/TMDL or fixture line endings.
+* -text
+*.png binary

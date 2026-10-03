@@ -1,0 +1,11 @@
+﻿PageID,FilterID,FilterType,SemanticTable,PhysicalTable,Column,Label,Scope,Interaction
+P01,P01-F01,SLICER,DimDate,dim_date,calendar_year,Year,PAGE,Filters all analytical visuals on page.
+P01,P01-F02,SLICER,DimDate,dim_date,calendar_quarter,Quarter,PAGE,Filters all analytical visuals on page.
+P02,P02-F01,SLICER,DimDate,dim_date,calendar_year,Year,PAGE,Filters all analytical visuals on page.
+P02,P02-F02,SLICER,DimDate,dim_date,calendar_quarter,Quarter,PAGE,Filters all analytical visuals on page.
+P03,P03-F01,SLICER,DimDate,dim_date,calendar_year,Year,PAGE,Filters all analytical visuals on page.
+P03,P03-F02,SLICER,DimDate,dim_date,calendar_quarter,Quarter,PAGE,Filters all analytical visuals on page.
+P04,P04-F01,SLICER,DimDate,dim_date,calendar_year,Year,PAGE,Filters all analytical visuals on page.
+P04,P04-F02,SLICER,DimDate,dim_date,calendar_quarter,Quarter,PAGE,Filters all analytical visuals on page.
+P05,P05-F01,SLICER,DimDate,dim_date,calendar_year,Year,PAGE,Filters all analytical visuals on page.
+P05,P05-F02,SLICER,DimDate,dim_date,calendar_quarter,Quarter,PAGE,Filters all analytical visuals on page.

@@ -1,0 +1,25 @@
+entity_id,entity_type,entity_name,grain,source,natural_key,warehouse_key,model_status,load_gate
+F01,FACT,FactClaim,One governed FHIR ExplanationOfBenefit claim,staging.eob_claim,pipeline_run_id + eob_id,fact_claim_key,APPROVED_DESIGN,NONE
+F02,FACT,FactItem,One governed EOB item within one claim,staging.eob_item,pipeline_run_id + eob_id + item_sequence,fact_item_key,APPROVED_DESIGN,NONE
+F03,FACT,FactClaimTotal,One claim-total element at its exact source ordinal,staging.eob_total,pipeline_run_id + eob_id + source_ordinal,fact_claim_total_key,APPROVED_DESIGN,NONE
+F04,FACT,FactClaimAdjudication,One claim-level adjudication element at its exact source ordinal,staging.eob_adjudication,pipeline_run_id + eob_id + source_ordinal,fact_claim_adjudication_key,APPROVED_DESIGN,NONE
+F05,FACT,FactItemAdjudication,One item-level adjudication element at its exact source ordinal,staging.eob_item_adjudication,pipeline_run_id + eob_id + item_sequence + source_ordinal,fact_item_adjudication_key,APPROVED_DESIGN,NONE
+F06,FACT,FactDiagnosisOccurrence,One diagnosis occurrence attached to one claim,staging.eob_diagnosis,pipeline_run_id + eob_id + diagnosis_sequence,fact_diagnosis_occurrence_key,APPROVED_DESIGN,DIAGNOSIS_TERMINOLOGY_MAPPING_FOR_FULL_DIMENSION_ATTRIBUTES
+F07,FACT,FactProcedureOccurrence,One procedure occurrence attached to one claim,staging.eob_procedure,pipeline_run_id + eob_id + procedure_sequence,fact_procedure_occurrence_key,APPROVED_DESIGN,PROCEDURE_TERMINOLOGY_MAPPING_FOR_FULL_DIMENSION_ATTRIBUTES
+F08,FACT,FactCareTeamOccurrence,One care-team participation occurrence attached to one claim,staging.eob_care_team,pipeline_run_id + eob_id + careteam_sequence,fact_care_team_occurrence_key,APPROVED_DESIGN,PROVIDER_REFERENCE_NORMALIZATION
+F09,FACT,FactSupportingInfoOccurrence,One supporting-information occurrence attached to one claim,staging.eob_supporting_info,pipeline_run_id + eob_id + supporting_info_sequence,fact_supporting_info_occurrence_key,APPROVED_DESIGN,SUPPORTING_INFO_TERMINOLOGY_FOR_FULL_DIMENSION_ATTRIBUTES
+F10,FACT,FactItemDetail,One EOB item-detail element within one claim item,staging.eob_item_detail,pipeline_run_id + eob_id + item_sequence + detail_sequence,fact_item_detail_key,APPROVED_DESIGN,SERVICE_TERMINOLOGY_FOR_FULL_DIMENSION_ATTRIBUTES
+D01,DIMENSION,DimDate,One calendar date,Generated governed calendar,calendar_date,date_key,APPROVED_DESIGN,NONE
+D02,DIMENSION,DimPipelineRun,One governed pipeline run,governance.pipeline_run,pipeline_run_id,pipeline_run_key,APPROVED_DESIGN,NONE
+D03,DIMENSION,DimPatient,One governed patient dimension version,staging.patient,source_system + patient_id + dimensional_version,patient_key,APPROVED_DESIGN_SCD2,NONE
+D04,DIMENSION,DimCoverage,One governed coverage dimension version,staging.coverage,source_system + coverage_id + dimensional_version,coverage_key,APPROVED_DESIGN_SCD2,CLAIM_INSURANCE_ARRAY_NORMALIZATION_FOR_RELATIONSHIP
+D05,DIMENSION,DimFinancialConcept,One authoritative financial system/code concept version,AUTHORITATIVE_FINANCIAL_TERMINOLOGY.csv,system_uri + code + authority_version,financial_concept_key,APPROVED_DESIGN_REFERENCE,NONE
+D06,DIMENSION,DimCurrency,One currency code,FHIR Money.currency,currency_code,currency_key,APPROVED_DESIGN_REFERENCE,NONE
+D07,DIMENSION,DimClaimType,One claim-type system/code concept,staging.eob_claim,system_uri + code,claim_type_key,DESIGN_APPROVED_LOAD_GATED,AUTHORITATIVE_NON_FINANCIAL_TERMINOLOGY
+D08,DIMENSION,DimServiceCode,One service/product coding system/code concept,staging.eob_item + staging.eob_item_detail,system_uri + code,service_code_key,DESIGN_APPROVED_LOAD_GATED,AUTHORITATIVE_SERVICE_TERMINOLOGY
+D09,DIMENSION,DimDiagnosis,One diagnosis coding system/code concept,staging.eob_diagnosis,system_uri + code,diagnosis_key,DESIGN_APPROVED_LOAD_GATED,AUTHORITATIVE_DIAGNOSIS_TERMINOLOGY
+D10,DIMENSION,DimProcedure,One procedure coding system/code concept,staging.eob_procedure,system_uri + code,procedure_key,DESIGN_APPROVED_LOAD_GATED,AUTHORITATIVE_PROCEDURE_TERMINOLOGY
+D11,DIMENSION,DimProvider,One normalized provider identity/version,Claim/provider and care-team references/identifiers,normalized provider identity,provider_key,DESIGN_APPROVED_LOAD_GATED,PROVIDER_REFERENCE_AND_IDENTIFIER_NORMALIZATION
+D12,DIMENSION,DimPayer,One normalized payer/insurer identity/version,EOB insurer/reference structures,normalized payer identity,payer_key,DESIGN_APPROVED_LOAD_GATED,PAYER_REFERENCE_NORMALIZATION
+D13,DIMENSION,DimSupportingInfoCategory,One supporting-information system/code concept,staging.eob_supporting_info,system_uri + code,supporting_info_category_key,DESIGN_APPROVED_LOAD_GATED,AUTHORITATIVE_SUPPORTING_INFO_TERMINOLOGY
+B01,BRIDGE,BridgeClaimCoverage,One claim-to-coverage association from EOB insurance[],staging.eob_claim.insurance_json,pipeline_run_id + eob_id + coverage_reference + source_ordinal,bridge_claim_coverage_key,DESIGN_APPROVED_LOAD_GATED,CLAIM_INSURANCE_ARRAY_NORMALIZATION_AND_CARDINALITY_VALIDATION

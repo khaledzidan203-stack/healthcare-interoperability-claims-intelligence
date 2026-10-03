@@ -1,0 +1,103 @@
+table 'analytics dim_patient'
+	isHidden
+	lineageTag: da16398d-c5bf-4d00-8f32-a92039d5f1f8
+
+	column patient_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ac16c1d7-86d2-4f4e-ac81-3af6daa96775
+		summarizeBy: none
+		sourceColumn: patient_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_system
+		dataType: string
+		lineageTag: 67dc4a8e-1a4c-4c6b-860d-2ceb28772793
+		summarizeBy: none
+		sourceColumn: source_system
+
+		annotation SummarizationSetBy = Automatic
+
+	column patient_id
+		dataType: string
+		lineageTag: cf854cb6-38ab-4882-acd2-ac9aa9638d61
+		summarizeBy: none
+		sourceColumn: patient_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column birth_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 91ecda65-81d3-4931-9eb2-60cc599214d9
+		summarizeBy: none
+		sourceColumn: birth_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column gender
+		dataType: string
+		lineageTag: bf1b7d6e-c862-4872-bc2f-2067b84f07f5
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column valid_from_pipeline_run_id
+		dataType: string
+		lineageTag: 83ef859a-265f-472c-8739-30103004fb4d
+		summarizeBy: none
+		sourceColumn: valid_from_pipeline_run_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column valid_to_pipeline_run_id
+		dataType: string
+		lineageTag: d14c6eee-7e7c-4551-ac2f-78a2f05319a6
+		summarizeBy: none
+		sourceColumn: valid_to_pipeline_run_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_current
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5d455356-f1c2-4ed7-aedc-b27f3f4b111d
+		summarizeBy: none
+		sourceColumn: is_current
+
+		annotation SummarizationSetBy = Automatic
+
+	column row_hash
+		dataType: string
+		isHidden
+		lineageTag: ad299a80-3356-4f59-86ce-ad4ea7fa94b8
+		summarizeBy: none
+		sourceColumn: row_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	column attributes_json
+		dataType: string
+		lineageTag: db45a5ba-5b75-4aca-aefb-8c5a0c66018b
+		summarizeBy: none
+		sourceColumn: attributes_json
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics dim_patient' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_dim_patient = Source{[Schema="analytics",Item="dim_patient"]}[Data]
+				in
+				    analytics_dim_patient
+
+	annotation PBI_ResultType = Table
+

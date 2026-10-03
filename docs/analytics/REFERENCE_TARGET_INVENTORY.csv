@@ -1,0 +1,7 @@
+source_resource_type,json_path,reference_form,target_resource_type,occurrence_count
+Coverage,$.beneficiary,RELATIVE,Patient,1
+Coverage,$.payor[0],CONTAINED,Organization,1
+ExplanationOfBenefit,$.insurer,CONTAINED,Organization,3
+ExplanationOfBenefit,$.patient,RELATIVE,Patient,6
+ExplanationOfBenefit,$.provider,CONTAINED,Organization,3
+ExplanationOfBenefit,$.provider,CONTAINED,Practitioner,1

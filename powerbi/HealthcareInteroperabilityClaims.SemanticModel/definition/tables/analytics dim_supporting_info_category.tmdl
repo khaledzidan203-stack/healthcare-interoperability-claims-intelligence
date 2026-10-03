@@ -1,0 +1,80 @@
+table 'analytics dim_supporting_info_category'
+	lineageTag: a71f7f76-78ba-4792-8cfc-575117a2c273
+
+	column supporting_info_category_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8d5d64e6-e1d4-420d-b478-d41fd04133d1
+		summarizeBy: none
+		sourceColumn: supporting_info_category_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column system_uri
+		dataType: string
+		lineageTag: 05f424e0-2ef6-4292-8153-4912bfffbd32
+		summarizeBy: none
+		sourceColumn: system_uri
+
+		annotation SummarizationSetBy = Automatic
+
+	column code
+		dataType: string
+		lineageTag: e7801c8b-2d51-4cf1-be41-530c30d21453
+		summarizeBy: none
+		sourceColumn: code
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_display
+		dataType: string
+		lineageTag: 0ef4e837-0892-4ee8-9dd0-d909cca80446
+		summarizeBy: none
+		sourceColumn: source_display
+
+		annotation SummarizationSetBy = Automatic
+
+	column authoritative_display
+		dataType: string
+		lineageTag: 1fa22546-7249-415d-ae80-82a3321856b9
+		summarizeBy: none
+		sourceColumn: authoritative_display
+
+		annotation SummarizationSetBy = Automatic
+
+	column mapping_status
+		dataType: string
+		lineageTag: 32bf7cf1-7016-412d-b3e6-2eb4269013ee
+		summarizeBy: none
+		sourceColumn: mapping_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column authority
+		dataType: string
+		lineageTag: 1e6b4ae2-a37f-4912-b690-d30237ccc871
+		summarizeBy: none
+		sourceColumn: authority
+
+		annotation SummarizationSetBy = Automatic
+
+	column authority_version
+		dataType: string
+		lineageTag: e4dd8f67-aa65-47e0-b2ec-b5cdb8e58b8c
+		summarizeBy: none
+		sourceColumn: authority_version
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics dim_supporting_info_category' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_dim_supporting_info_category = Source{[Schema="analytics",Item="dim_supporting_info_category"]}[Data]
+				in
+				    analytics_dim_supporting_info_category
+
+	annotation PBI_ResultType = Table
+

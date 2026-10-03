@@ -1,0 +1,54 @@
+relationship_id,from_entity,to_entity,relationship_role,cardinality,filter_direction,key_rule,status,notes
+R001,DimPipelineRun,FactClaim,Pipeline Run,1:*,DIMENSION_TO_FACT,pipeline_run_key,APPROVED_DESIGN,Technical/audit conformed dimension.
+R002,DimPatient,FactClaim,Patient,1:*,DIMENSION_TO_FACT,patient_key,APPROVED_DESIGN,Patient key propagated from the governed claim context for child facts.
+R003,DimDate,FactClaim,Claim Created Date,1:*,DIMENSION_TO_FACT,claim_created_date_key,APPROVED_DESIGN,Conformed claim-created date propagated to all facts.
+R004,DimPipelineRun,FactItem,Pipeline Run,1:*,DIMENSION_TO_FACT,pipeline_run_key,APPROVED_DESIGN,Technical/audit conformed dimension.
+R005,DimPatient,FactItem,Patient,1:*,DIMENSION_TO_FACT,patient_key,APPROVED_DESIGN,Patient key propagated from the governed claim context for child facts.
+R006,DimDate,FactItem,Claim Created Date,1:*,DIMENSION_TO_FACT,claim_created_date_key,APPROVED_DESIGN,Conformed claim-created date propagated to all facts.
+R007,DimPipelineRun,FactClaimTotal,Pipeline Run,1:*,DIMENSION_TO_FACT,pipeline_run_key,APPROVED_DESIGN,Technical/audit conformed dimension.
+R008,DimPatient,FactClaimTotal,Patient,1:*,DIMENSION_TO_FACT,patient_key,APPROVED_DESIGN,Patient key propagated from the governed claim context for child facts.
+R009,DimDate,FactClaimTotal,Claim Created Date,1:*,DIMENSION_TO_FACT,claim_created_date_key,APPROVED_DESIGN,Conformed claim-created date propagated to all facts.
+R010,DimPipelineRun,FactClaimAdjudication,Pipeline Run,1:*,DIMENSION_TO_FACT,pipeline_run_key,APPROVED_DESIGN,Technical/audit conformed dimension.
+R011,DimPatient,FactClaimAdjudication,Patient,1:*,DIMENSION_TO_FACT,patient_key,APPROVED_DESIGN,Patient key propagated from the governed claim context for child facts.
+R012,DimDate,FactClaimAdjudication,Claim Created Date,1:*,DIMENSION_TO_FACT,claim_created_date_key,APPROVED_DESIGN,Conformed claim-created date propagated to all facts.
+R013,DimPipelineRun,FactItemAdjudication,Pipeline Run,1:*,DIMENSION_TO_FACT,pipeline_run_key,APPROVED_DESIGN,Technical/audit conformed dimension.
+R014,DimPatient,FactItemAdjudication,Patient,1:*,DIMENSION_TO_FACT,patient_key,APPROVED_DESIGN,Patient key propagated from the governed claim context for child facts.
+R015,DimDate,FactItemAdjudication,Claim Created Date,1:*,DIMENSION_TO_FACT,claim_created_date_key,APPROVED_DESIGN,Conformed claim-created date propagated to all facts.
+R016,DimPipelineRun,FactDiagnosisOccurrence,Pipeline Run,1:*,DIMENSION_TO_FACT,pipeline_run_key,APPROVED_DESIGN,Technical/audit conformed dimension.
+R017,DimPatient,FactDiagnosisOccurrence,Patient,1:*,DIMENSION_TO_FACT,patient_key,APPROVED_DESIGN,Patient key propagated from the governed claim context for child facts.
+R018,DimDate,FactDiagnosisOccurrence,Claim Created Date,1:*,DIMENSION_TO_FACT,claim_created_date_key,APPROVED_DESIGN,Conformed claim-created date propagated to all facts.
+R019,DimPipelineRun,FactProcedureOccurrence,Pipeline Run,1:*,DIMENSION_TO_FACT,pipeline_run_key,APPROVED_DESIGN,Technical/audit conformed dimension.
+R020,DimPatient,FactProcedureOccurrence,Patient,1:*,DIMENSION_TO_FACT,patient_key,APPROVED_DESIGN,Patient key propagated from the governed claim context for child facts.
+R021,DimDate,FactProcedureOccurrence,Claim Created Date,1:*,DIMENSION_TO_FACT,claim_created_date_key,APPROVED_DESIGN,Conformed claim-created date propagated to all facts.
+R022,DimPipelineRun,FactCareTeamOccurrence,Pipeline Run,1:*,DIMENSION_TO_FACT,pipeline_run_key,APPROVED_DESIGN,Technical/audit conformed dimension.
+R023,DimPatient,FactCareTeamOccurrence,Patient,1:*,DIMENSION_TO_FACT,patient_key,APPROVED_DESIGN,Patient key propagated from the governed claim context for child facts.
+R024,DimDate,FactCareTeamOccurrence,Claim Created Date,1:*,DIMENSION_TO_FACT,claim_created_date_key,APPROVED_DESIGN,Conformed claim-created date propagated to all facts.
+R025,DimPipelineRun,FactSupportingInfoOccurrence,Pipeline Run,1:*,DIMENSION_TO_FACT,pipeline_run_key,APPROVED_DESIGN,Technical/audit conformed dimension.
+R026,DimPatient,FactSupportingInfoOccurrence,Patient,1:*,DIMENSION_TO_FACT,patient_key,APPROVED_DESIGN,Patient key propagated from the governed claim context for child facts.
+R027,DimDate,FactSupportingInfoOccurrence,Claim Created Date,1:*,DIMENSION_TO_FACT,claim_created_date_key,APPROVED_DESIGN,Conformed claim-created date propagated to all facts.
+R028,DimPipelineRun,FactItemDetail,Pipeline Run,1:*,DIMENSION_TO_FACT,pipeline_run_key,APPROVED_DESIGN,Technical/audit conformed dimension.
+R029,DimPatient,FactItemDetail,Patient,1:*,DIMENSION_TO_FACT,patient_key,APPROVED_DESIGN,Patient key propagated from the governed claim context for child facts.
+R030,DimDate,FactItemDetail,Claim Created Date,1:*,DIMENSION_TO_FACT,claim_created_date_key,APPROVED_DESIGN,Conformed claim-created date propagated to all facts.
+R031,DimDate,FactClaim,Billable Start Date,1:*,DIMENSION_TO_FACT,billable_start_date_key,APPROVED_DESIGN,
+R032,DimDate,FactClaim,Billable End Date,1:*,DIMENSION_TO_FACT,billable_end_date_key,APPROVED_DESIGN,
+R033,DimDate,FactItem,Serviced Date,1:*,DIMENSION_TO_FACT,serviced_date_key,APPROVED_DESIGN,
+R034,DimDate,FactProcedureOccurrence,Procedure Date,1:*,DIMENSION_TO_FACT,procedure_date_key,APPROVED_DESIGN,
+R035,DimDate,FactSupportingInfoOccurrence,Timing Date,1:*,DIMENSION_TO_FACT,timing_date_key,APPROVED_DESIGN,
+R036,DimFinancialConcept,FactClaimTotal,Exact Financial Concept,1:*,DIMENSION_TO_FACT,financial_concept_key,APPROVED_DESIGN,Exact system/code only; no alias consolidation.
+R037,DimCurrency,FactClaimTotal,Currency,1:*,DIMENSION_TO_FACT,currency_key,APPROVED_DESIGN,Cross-currency aggregation is forbidden.
+R038,DimFinancialConcept,FactClaimAdjudication,Exact Financial Concept,1:*,DIMENSION_TO_FACT,financial_concept_key,APPROVED_DESIGN,Exact system/code only; no alias consolidation.
+R039,DimCurrency,FactClaimAdjudication,Currency,1:*,DIMENSION_TO_FACT,currency_key,APPROVED_DESIGN,Cross-currency aggregation is forbidden.
+R040,DimFinancialConcept,FactItemAdjudication,Exact Financial Concept,1:*,DIMENSION_TO_FACT,financial_concept_key,APPROVED_DESIGN,Exact system/code only; no alias consolidation.
+R041,DimCurrency,FactItemAdjudication,Currency,1:*,DIMENSION_TO_FACT,currency_key,APPROVED_DESIGN,Cross-currency aggregation is forbidden.
+R042,DimClaimType,FactClaim,Claim Type,1:*,DIMENSION_TO_FACT,claim_type_key,LOAD_GATED,Requires broader authoritative terminology resolution.
+R043,DimServiceCode,FactItem,Service/Product,1:*,DIMENSION_TO_FACT,service_code_key,LOAD_GATED,Requires service terminology resolution.
+R044,DimServiceCode,FactItemDetail,Service/Product,1:*,DIMENSION_TO_FACT,service_code_key,LOAD_GATED,Requires service terminology resolution.
+R045,DimDiagnosis,FactDiagnosisOccurrence,Diagnosis,1:*,DIMENSION_TO_FACT,diagnosis_key,LOAD_GATED,Requires diagnosis terminology resolution.
+R046,DimProcedure,FactProcedureOccurrence,Procedure,1:*,DIMENSION_TO_FACT,procedure_key,LOAD_GATED,Requires procedure terminology resolution.
+R047,DimProvider,FactClaim,Claim Provider,1:*,DIMENSION_TO_FACT,provider_key,LOAD_GATED,Contained/relative provider references must be normalized.
+R048,DimProvider,FactCareTeamOccurrence,Care Team Provider,1:*,DIMENSION_TO_FACT,provider_key,LOAD_GATED,Provider identifiers/references require mastered identity rules.
+R049,DimPayer,FactClaim,Insurer/Payer,1:*,DIMENSION_TO_FACT,payer_key,LOAD_GATED,Payer reference normalization required.
+R050,DimSupportingInfoCategory,FactSupportingInfoOccurrence,Supporting Information Category,1:*,DIMENSION_TO_FACT,supporting_info_category_key,LOAD_GATED,Requires supporting-information terminology resolution.
+R051,DimPipelineRun,BridgeClaimCoverage,Pipeline Run,1:*,DIMENSION_TO_FACT,pipeline_run_key,APPROVED_DESIGN,Technical/audit conformed dimension for the run-scoped bridge.
+R052,DimCoverage,BridgeClaimCoverage,Coverage,1:*,DIMENSION_TO_FACT,coverage_key,LOAD_GATED,insurance[] normalization required before load.
+R053,BridgeClaimCoverage,FactClaim,Claim Coverage Association,*:1,DIMENSION_TO_FACT,claim business key association,LOAD_GATED,Bridge is not a fact; cardinality must be validated before semantic use.

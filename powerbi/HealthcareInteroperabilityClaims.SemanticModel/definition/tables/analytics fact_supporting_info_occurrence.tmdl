@@ -1,0 +1,134 @@
+table 'analytics fact_supporting_info_occurrence'
+	lineageTag: 950db43b-8abb-487b-8ed0-466ebc30b349
+
+	column fact_supporting_info_occurrence_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0809c847-471f-44d0-b4fa-f9cf35c985df
+		summarizeBy: none
+		sourceColumn: fact_supporting_info_occurrence_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column pipeline_run_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: debde9cb-1f50-46d3-ae28-08ae0b3e9c15
+		summarizeBy: none
+		sourceColumn: pipeline_run_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column patient_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8127400c-cffb-44d2-aaa3-0a491e1368dc
+		summarizeBy: none
+		sourceColumn: patient_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column claim_created_date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 77439a76-454f-46a6-a748-7064d54d51e0
+		summarizeBy: none
+		sourceColumn: claim_created_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column timing_date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f20d056b-12b9-44d0-bb5c-873259e5504a
+		summarizeBy: none
+		sourceColumn: timing_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column supporting_info_category_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a3f5a472-117a-45c4-9285-a47624567936
+		summarizeBy: none
+		sourceColumn: supporting_info_category_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column eob_id
+		dataType: string
+		lineageTag: 09f42fff-740e-4017-9943-c38bf9650bd3
+		summarizeBy: none
+		sourceColumn: eob_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column supporting_info_sequence
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f6ff9165-843e-4fb3-ab2b-37c471a1931b
+		summarizeBy: none
+		sourceColumn: supporting_info_sequence
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_string
+		dataType: string
+		lineageTag: ce25afac-9f94-4a66-b936-7db60838c4ad
+		summarizeBy: none
+		sourceColumn: value_string
+
+		annotation SummarizationSetBy = Automatic
+
+	column code_json
+		dataType: string
+		lineageTag: d0f1f09e-1df9-4998-aa86-b1af5b5608ed
+		summarizeBy: none
+		sourceColumn: code_json
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_quantity_json
+		dataType: string
+		lineageTag: 7335038c-1f2a-4e39-9dcd-87f447bb65b5
+		summarizeBy: none
+		sourceColumn: value_quantity_json
+
+		annotation SummarizationSetBy = Automatic
+
+	column supporting_info_row_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 729b5d53-4412-4629-822b-805fb5e40f28
+		summarizeBy: none
+		sourceColumn: supporting_info_row_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_record_hash
+		dataType: string
+		isHidden
+		lineageTag: ebaab75d-251c-42f0-bc95-eec00eddfa83
+		summarizeBy: none
+		sourceColumn: source_record_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics fact_supporting_info_occurrence' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_fact_supporting_info_occurrence = Source{[Schema="analytics",Item="fact_supporting_info_occurrence"]}[Data]
+				in
+				    analytics_fact_supporting_info_occurrence
+
+	annotation PBI_ResultType = Table
+

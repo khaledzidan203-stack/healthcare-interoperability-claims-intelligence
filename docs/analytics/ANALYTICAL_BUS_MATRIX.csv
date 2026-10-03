@@ -1,0 +1,11 @@
+fact,DimDate,DimPipelineRun,DimPatient,DimCoverage,DimFinancialConcept,DimCurrency,DimClaimType,DimServiceCode,DimDiagnosis,DimProcedure,DimProvider,DimPayer,DimSupportingInfoCategory
+FactClaim,Created/Billable,X,X,BRIDGE_GATED,,,GATED,,,,GATED,GATED,
+FactItem,ClaimCreated/Serviced,X,X,,,,,GATED,,,,,
+FactClaimTotal,ClaimCreated,X,X,,X,X,,,,,,,
+FactClaimAdjudication,ClaimCreated,X,X,,X,X,,,,,,,
+FactItemAdjudication,ClaimCreated,X,X,,X,X,,,,,,,
+FactDiagnosisOccurrence,ClaimCreated,X,X,,,,,,GATED,,,,
+FactProcedureOccurrence,ClaimCreated/Procedure,X,X,,,,,,,GATED,,,
+FactCareTeamOccurrence,ClaimCreated,X,X,,,,,,,,GATED,,
+FactSupportingInfoOccurrence,ClaimCreated/Timing,X,X,,,,,,,,,,GATED
+FactItemDetail,ClaimCreated,X,X,,,,,GATED,,,,,

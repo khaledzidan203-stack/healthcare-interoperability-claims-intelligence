@@ -1,0 +1,205 @@
+relationship d3917448-3583-52e4-805c-a148c472ec09
+	fromColumn: 'analytics fact_claim'.pipeline_run_key
+	toColumn: 'analytics dim_pipeline_run'.pipeline_run_key
+
+relationship dd9f2b5f-b372-5f20-a4fb-b305db5e0441
+	fromColumn: 'analytics fact_claim'.patient_key
+	toColumn: 'analytics dim_patient'.patient_key
+
+relationship 0d830280-56a1-566a-ada6-d86166e8d1a0
+	fromColumn: 'analytics fact_claim'.claim_created_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship 7d2966a9-459f-57e3-8ccc-59c9b406e8f2
+	fromColumn: 'analytics fact_item'.pipeline_run_key
+	toColumn: 'analytics dim_pipeline_run'.pipeline_run_key
+
+relationship 664ab23a-cd0b-5f75-a0f7-3c134943570c
+	fromColumn: 'analytics fact_item'.patient_key
+	toColumn: 'analytics dim_patient'.patient_key
+
+relationship 518ae6c3-9df4-5af0-8972-3f1d91c29228
+	fromColumn: 'analytics fact_item'.claim_created_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship ad74ad72-bc6e-5303-ba5e-8a514319bc6f
+	fromColumn: 'analytics fact_claim_total'.pipeline_run_key
+	toColumn: 'analytics dim_pipeline_run'.pipeline_run_key
+
+relationship 70d1acbc-4389-5339-8776-2f7f84e6efce
+	fromColumn: 'analytics fact_claim_total'.patient_key
+	toColumn: 'analytics dim_patient'.patient_key
+
+relationship 9f555cdf-5c58-52c5-b884-413fe3474c5b
+	fromColumn: 'analytics fact_claim_total'.claim_created_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship 62919fa4-6683-5db3-a57f-b540993bee5f
+	fromColumn: 'analytics fact_claim_adjudication'.pipeline_run_key
+	toColumn: 'analytics dim_pipeline_run'.pipeline_run_key
+
+relationship a313ac3a-f430-5335-bf5f-cce753c51b5d
+	fromColumn: 'analytics fact_claim_adjudication'.patient_key
+	toColumn: 'analytics dim_patient'.patient_key
+
+relationship ba541094-a3ff-5ab7-972e-9cfc1fa9d087
+	fromColumn: 'analytics fact_claim_adjudication'.claim_created_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship 06b06be2-2a50-501f-ab4e-cf2e23e88edd
+	fromColumn: 'analytics fact_item_adjudication'.pipeline_run_key
+	toColumn: 'analytics dim_pipeline_run'.pipeline_run_key
+
+relationship 9ce2749a-cb4e-5cb9-9b93-f3416e597374
+	fromColumn: 'analytics fact_item_adjudication'.patient_key
+	toColumn: 'analytics dim_patient'.patient_key
+
+relationship a16c25dc-63bf-5907-b305-2a088caa2b2a
+	fromColumn: 'analytics fact_item_adjudication'.claim_created_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship 8eb6387e-5d63-565f-9e1c-ad2c01d68b07
+	fromColumn: 'analytics fact_diagnosis_occurrence'.pipeline_run_key
+	toColumn: 'analytics dim_pipeline_run'.pipeline_run_key
+
+relationship 06ecb8fd-2768-59a2-a577-7322e3197a18
+	fromColumn: 'analytics fact_diagnosis_occurrence'.patient_key
+	toColumn: 'analytics dim_patient'.patient_key
+
+relationship c79a5169-a750-55a4-8621-38c6a4685284
+	fromColumn: 'analytics fact_diagnosis_occurrence'.claim_created_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship 402bbc00-26a5-5eee-9325-cddc4b04a6d4
+	fromColumn: 'analytics fact_procedure_occurrence'.pipeline_run_key
+	toColumn: 'analytics dim_pipeline_run'.pipeline_run_key
+
+relationship 57657815-553d-56b9-950d-ebcbfdefe84f
+	fromColumn: 'analytics fact_procedure_occurrence'.patient_key
+	toColumn: 'analytics dim_patient'.patient_key
+
+relationship c92a64ac-0123-5ceb-801e-3af2923828b3
+	fromColumn: 'analytics fact_procedure_occurrence'.claim_created_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship ac5b5ff9-d622-5b00-a852-bc9eddbc9d38
+	fromColumn: 'analytics fact_care_team_occurrence'.pipeline_run_key
+	toColumn: 'analytics dim_pipeline_run'.pipeline_run_key
+
+relationship 043cb816-4d72-5694-a5db-65a38d8bf963
+	fromColumn: 'analytics fact_care_team_occurrence'.patient_key
+	toColumn: 'analytics dim_patient'.patient_key
+
+relationship 1447255f-1e2c-5542-948f-be796168a8ef
+	fromColumn: 'analytics fact_care_team_occurrence'.claim_created_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship 8cf8b740-43b5-5a86-a12a-c14a429fc7df
+	fromColumn: 'analytics fact_supporting_info_occurrence'.pipeline_run_key
+	toColumn: 'analytics dim_pipeline_run'.pipeline_run_key
+
+relationship b70caf25-c784-5a03-b25d-b0db7b5ca95d
+	fromColumn: 'analytics fact_supporting_info_occurrence'.patient_key
+	toColumn: 'analytics dim_patient'.patient_key
+
+relationship e6a5b174-6008-5e67-bd1b-82d811d14e96
+	fromColumn: 'analytics fact_supporting_info_occurrence'.claim_created_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship f61d19e7-7274-58d3-80f7-819506a38c92
+	fromColumn: 'analytics fact_item_detail'.pipeline_run_key
+	toColumn: 'analytics dim_pipeline_run'.pipeline_run_key
+
+relationship 1b1fcd75-6323-500b-99bf-4733c57ec076
+	fromColumn: 'analytics fact_item_detail'.patient_key
+	toColumn: 'analytics dim_patient'.patient_key
+
+relationship 306141d7-fe3b-5d7f-be92-2dd232c41be7
+	fromColumn: 'analytics fact_item_detail'.claim_created_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship b6c87ccc-71e2-537d-b019-58a31062ae6a
+	isActive: false
+	fromColumn: 'analytics fact_claim'.billable_start_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship c7b9c8af-3f32-58f1-a51b-17263fb4a529
+	isActive: false
+	fromColumn: 'analytics fact_claim'.billable_end_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship 0e0105d0-de92-52e1-959c-7f4cd404d40c
+	isActive: false
+	fromColumn: 'analytics fact_item'.serviced_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship d71e4a95-9f42-5a97-8640-102cac69a7ad
+	isActive: false
+	fromColumn: 'analytics fact_procedure_occurrence'.procedure_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship a8095eed-ee87-5da2-9e08-fc92980b5a0c
+	isActive: false
+	fromColumn: 'analytics fact_supporting_info_occurrence'.timing_date_key
+	toColumn: 'analytics dim_date'.date_key
+
+relationship 05e29eb0-f3d0-5614-a7f7-44eb36882aba
+	fromColumn: 'analytics fact_claim'.claim_type_key
+	toColumn: 'analytics dim_claim_type'.claim_type_key
+
+relationship 1cf81028-5d31-54a1-9ce0-5653a993e9ff
+	fromColumn: 'analytics fact_claim'.provider_key
+	toColumn: 'analytics dim_provider'.provider_key
+
+relationship 907852de-1895-577d-9530-ea8f9632d318
+	fromColumn: 'analytics fact_claim'.payer_key
+	toColumn: 'analytics dim_payer'.payer_key
+
+relationship ddb440f9-98b9-57ef-9e3a-d5fc0a89d9ab
+	fromColumn: 'analytics fact_item'.service_code_key
+	toColumn: 'analytics dim_service_code'.service_code_key
+
+relationship 3c6a2509-3dc4-5e38-925c-cb7fcddb85c7
+	fromColumn: 'analytics fact_claim_total'.financial_concept_key
+	toColumn: 'analytics dim_financial_concept'.financial_concept_key
+
+relationship 3b939bc4-ff24-5bc5-bab7-d8ab65126034
+	fromColumn: 'analytics fact_claim_total'.currency_key
+	toColumn: 'analytics dim_currency'.currency_key
+
+relationship d06f95e6-c0bc-5623-a0f5-7f0f381ca598
+	fromColumn: 'analytics fact_claim_adjudication'.financial_concept_key
+	toColumn: 'analytics dim_financial_concept'.financial_concept_key
+
+relationship 604b6fbe-ef0b-50ab-bf4f-1dac8620cd2e
+	fromColumn: 'analytics fact_claim_adjudication'.currency_key
+	toColumn: 'analytics dim_currency'.currency_key
+
+relationship f6d7c934-32b5-5639-a452-f6ce1e1359e5
+	fromColumn: 'analytics fact_item_adjudication'.financial_concept_key
+	toColumn: 'analytics dim_financial_concept'.financial_concept_key
+
+relationship 598eceeb-a908-542b-956d-49ddb2055bdf
+	fromColumn: 'analytics fact_item_adjudication'.currency_key
+	toColumn: 'analytics dim_currency'.currency_key
+
+relationship e2e7802e-c15e-5304-a57c-2f9c46e81008
+	fromColumn: 'analytics fact_diagnosis_occurrence'.diagnosis_key
+	toColumn: 'analytics dim_diagnosis'.diagnosis_key
+
+relationship ee5ee8cc-d36d-59e4-8a20-ed0c56b5fc03
+	fromColumn: 'analytics fact_procedure_occurrence'.procedure_key
+	toColumn: 'analytics dim_procedure'.procedure_key
+
+relationship 41cad180-773c-5ad1-bf37-65c675576b96
+	fromColumn: 'analytics fact_care_team_occurrence'.provider_key
+	toColumn: 'analytics dim_provider'.provider_key
+
+relationship 3fcf6444-5fd0-5cd8-8f5e-a2390da3b8a0
+	fromColumn: 'analytics fact_supporting_info_occurrence'.supporting_info_category_key
+	toColumn: 'analytics dim_supporting_info_category'.supporting_info_category_key
+
+relationship 449eb40a-4539-5437-8721-a14ef0130075
+	fromColumn: 'analytics fact_item_detail'.service_code_key
+	toColumn: 'analytics dim_service_code'.service_code_key
+

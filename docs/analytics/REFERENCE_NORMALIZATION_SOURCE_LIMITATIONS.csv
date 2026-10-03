@@ -1,0 +1,3 @@
+limitation_id,source_context,occurrence_count,source_state,governed_treatment,analytics_effect
+REF-SRC-001,EOB insurance.coverage,6,Display present; no reference or identifier,Preserve association; do not infer Coverage identity,DimCoverage relationship remains load-gated
+REF-SRC-002,EOB claim.provider,2,No explicit reference or identifier,Preserve occurrence; do not fabricate Provider identity,Map to explicit unresolved/unknown handling at warehouse load

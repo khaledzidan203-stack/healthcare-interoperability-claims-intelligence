@@ -1,0 +1,19 @@
+domain,code_system,row_count,coded_row_count,distinct_code_count
+Claim Adjudication Category,http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator,6,6,1
+Claim Adjudication Category,https://bluebutton.cms.gov/fhir/CodeSystem/Adjudication,25,25,24
+Claim Total Category,http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication,14,14,6
+Claim Total Category,http://terminology.hl7.org/CodeSystem/adjudication,12,12,3
+Claim Type,https://bluebutton.cms.gov/fhir/CodeSystem/CLM-TYPE-CD,6,6,6
+Diagnosis,http://hl7.org/fhir/sid/icd-10-cm,29,29,13
+Item Adjudication Category,http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudication,143,143,7
+Item Adjudication Category,http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBAdjudicationDiscriminator,13,13,1
+Item Adjudication Category,http://terminology.hl7.org/CodeSystem/adjudication,94,94,4
+Item Adjudication Category,https://bluebutton.cms.gov/fhir/CodeSystem/Adjudication,143,143,15
+Item Detail Product/Service,http://hl7.org/fhir/sid/ndc,13,13,8
+Item Product/Service,http://hl7.org/fhir/sid/ndc,2,2,2
+Item Product/Service,http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBCompoundLiteral,1,1,1
+Item Product/Service,http://www.ama-assn.org/go/cpt,18,18,2
+Item Product/Service,https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets,8,8,1
+Procedure,http://www.cms.gov/Medicare/Coding/ICD10,2,2,2
+Supporting Info Category,http://hl7.org/fhir/us/carin-bb/CodeSystem/C4BBSupportingInfoType,30,30,13
+Supporting Info Category,https://bluebutton.cms.gov/fhir/CodeSystem/Supporting-Information,82,82,30

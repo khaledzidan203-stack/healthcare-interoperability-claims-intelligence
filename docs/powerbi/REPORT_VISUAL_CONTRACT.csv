@@ -1,0 +1,74 @@
+﻿PageID,VisualID,VisualType,Title,Measure,SemanticTable,PhysicalTable,Column,BindingRole,GovernanceNote
+P00,P00-V01,TEXT,Healthcare Interoperability & Claims Intelligence Platform,,,,,,
+P00,P00-V02,TEXT,Governed FHIR Claims Analytics ? CMS Blue Button Sandbox,,,,,,
+P00,P00-V03,NAVIGATION_TILE,Executive Overview,,,,,Page navigation,
+P00,P00-V04,NAVIGATION_TILE,Claims Activity,,,,,Page navigation,
+P00,P00-V05,NAVIGATION_TILE,Clinical & Coding,,,,,Page navigation,
+P00,P00-V06,NAVIGATION_TILE,Provider & Payer,,,,,Page navigation,
+P00,P00-V07,NAVIGATION_TILE,Terminology & Governance,,,,,Page navigation,
+P00,P00-V08,NAVIGATION_TILE,Methodology & Validation,,,,,Page navigation,
+P01,P01-V01,TEXT,Executive Overview,,,,,,
+P01,P01-V02,HOME_BUTTON,Home,,,,,Navigate to INDEX,
+P01,P01-V03,SLICER,Year,,DimDate,dim_date,calendar_year,,
+P01,P01-V04,SLICER,Quarter,,DimDate,dim_date,calendar_quarter,,
+P01,P01-V05,KPI_CARD,Claim Count,Claim Count,_Measures,,,Value,
+P01,P01-V06,KPI_CARD,Item Count,Item Count,_Measures,,,Value,
+P01,P01-V07,KPI_CARD,Diagnosis Occurrences,Diagnosis Occurrences,_Measures,,,Value,
+P01,P01-V08,KPI_CARD,Procedure Occurrences,Procedure Occurrences,_Measures,,,Value,
+P01,P01-V09,KPI_CARD,Care Team Occurrences,Care Team Occurrences,_Measures,,,Value,
+P01,P01-V10,KPI_CARD,Supporting Info Occurrences,Supporting Info Occurrences,_Measures,,,Value,
+P01,P01-V11,LINE_CHART,Claim Activity Over Time,Claim Count,DimDate,dim_date,calendar_date,Axis=Date; Value=Claim Count,
+P01,P01-V12,BAR_CHART,Claims by Status,Claim Count,FactClaim,fact_claim,claim_status,Category=Claim Status; Value=Claim Count,
+P01,P01-V13,TEXT,Financial KPIs and Coverage filtering are intentionally excluded from this release.,,,,,,SG-001 + SG-002
+P02,P02-V01,TEXT,Claims Activity,,,,,,
+P02,P02-V02,HOME_BUTTON,Home,,,,,Navigate to INDEX,
+P02,P02-V03,SLICER,Year,,DimDate,dim_date,calendar_year,,
+P02,P02-V04,SLICER,Quarter,,DimDate,dim_date,calendar_quarter,,
+P02,P02-V05,KPI_CARD,Claim Count,Claim Count,_Measures,,,,
+P02,P02-V06,LINE_CHART,Claim Count by Date,Claim Count,DimDate,dim_date,calendar_date,,
+P02,P02-V07,BAR_CHART,Claims by Status,Claim Count,FactClaim,fact_claim,claim_status,,
+P02,P02-V08,BAR_CHART,Claims by Use,Claim Count,FactClaim,fact_claim,claim_use,,
+P02,P02-V09,BAR_CHART,Claims by Outcome,Claim Count,FactClaim,fact_claim,claim_outcome,,
+P02,P02-V10,TABLE,Claim Type Detail,Claim Count,DimClaimType,dim_claim_type,source_display,Source display + code + mapping status + Claim Count,Source terminology only; authoritative semantic labels remain mapping-gated.
+P02,P02-V11,TEXT,Claim type labels are source terminology unless explicitly mapped and approved.,,,,,,SG-003
+P03,P03-V01,TEXT,Clinical & Coding,,,,,,
+P03,P03-V02,HOME_BUTTON,Home,,,,,Navigate to INDEX,
+P03,P03-V03,SLICER,Year,,DimDate,dim_date,calendar_year,,
+P03,P03-V04,SLICER,Quarter,,DimDate,dim_date,calendar_quarter,,
+P03,P03-V05,KPI_CARD,Item Count,Item Count,_Measures,,,,
+P03,P03-V06,KPI_CARD,Diagnosis Occurrences,Diagnosis Occurrences,_Measures,,,,
+P03,P03-V07,KPI_CARD,Procedure Occurrences,Procedure Occurrences,_Measures,,,,
+P03,P03-V08,KPI_CARD,Supporting Info Occurrences,Supporting Info Occurrences,_Measures,,,,
+P03,P03-V09,BAR_CHART,Items by Service Code,Item Count,DimServiceCode,dim_service_code,source_display,,Source terminology; mapping-gated.
+P03,P03-V10,BAR_CHART,Diagnosis Occurrences by Source Diagnosis,Diagnosis Occurrences,DimDiagnosis,dim_diagnosis,source_display,,Source terminology; mapping-gated.
+P03,P03-V11,BAR_CHART,Procedure Occurrences by Source Procedure,Procedure Occurrences,DimProcedure,dim_procedure,source_display,,Source terminology; mapping-gated.
+P03,P03-V12,BAR_CHART,Supporting Information by Source Category,Supporting Info Occurrences,DimSupportingInfoCategory,dim_supporting_info_category,source_display,,Source terminology; mapping-gated.
+P03,P03-V13,TEXT,Coding visuals use source code/display with explicit mapping limitations.,,,,,,SG-003
+P04,P04-V01,TEXT,Provider & Payer,,,,,,
+P04,P04-V02,HOME_BUTTON,Home,,,,,Navigate to INDEX,
+P04,P04-V03,SLICER,Year,,DimDate,dim_date,calendar_year,,
+P04,P04-V04,SLICER,Quarter,,DimDate,dim_date,calendar_quarter,,
+P04,P04-V05,KPI_CARD,Claim Count,Claim Count,_Measures,,,,
+P04,P04-V06,KPI_CARD,Care Team Occurrences,Care Team Occurrences,_Measures,,,,
+P04,P04-V07,BAR_CHART,Claims by Provider,Claim Count,DimProvider,dim_provider,display,,
+P04,P04-V08,BAR_CHART,Claims by Payer,Claim Count,DimPayer,dim_payer,display,,
+P04,P04-V09,BAR_CHART,Care Team Occurrences by Provider Identity Status,Care Team Occurrences,DimProvider,dim_provider,identity_status,,
+P04,P04-V10,TABLE,Provider Identity Review,Care Team Occurrences,DimProvider,dim_provider,display,Display + Identity Status + Is Unknown + Care Team Occurrences,
+P04,P04-V11,TEXT,Unknown/unresolved provider identity is preserved explicitly; display text is never used to infer identity.,,,,,,
+P05,P05-V01,TEXT,Terminology & Governance,,,,,,
+P05,P05-V02,HOME_BUTTON,Home,,,,,Navigate to INDEX,
+P05,P05-V03,SLICER,Year,,DimDate,dim_date,calendar_year,,
+P05,P05-V04,SLICER,Quarter,,DimDate,dim_date,calendar_quarter,,
+P05,P05-V05,BAR_CHART,Claim Type Mapping Status,Claim Count,DimClaimType,dim_claim_type,mapping_status,,Mapping-status analysis only; no unapproved authoritative label substitution.
+P05,P05-V06,BAR_CHART,Service Code Mapping Status,Item Count,DimServiceCode,dim_service_code,mapping_status,,Mapping-status analysis only; no unapproved authoritative label substitution.
+P05,P05-V07,BAR_CHART,Diagnosis Mapping Status,Diagnosis Occurrences,DimDiagnosis,dim_diagnosis,mapping_status,,Mapping-status analysis only; no unapproved authoritative label substitution.
+P05,P05-V08,BAR_CHART,Procedure Mapping Status,Procedure Occurrences,DimProcedure,dim_procedure,mapping_status,,Mapping-status analysis only; no unapproved authoritative label substitution.
+P05,P05-V09,BAR_CHART,Supporting Info Mapping Status,Supporting Info Occurrences,DimSupportingInfoCategory,dim_supporting_info_category,mapping_status,,Mapping-status analysis only; no unapproved authoritative label substitution.
+P05,P05-V10,TEXT,Financial KPIs: BLOCKED | Coverage filtering: BLOCKED | Terminology: MAPPING_GATED | Snapshot: SINGLE_SNAPSHOT_ONLY,,,,,,
+P06,P06-V01,TEXT,Methodology & Validation,,,,,,
+P06,P06-V02,HOME_BUTTON,Home,,,,,Navigate to INDEX,
+P06,P06-V03,TEXT,Source & Interoperability,,,,,,CMS Blue Button Sandbox synthetic/test data ? FHIR R4 ? governed RAW/STAGING/Analytics.
+P06,P06-V04,TEXT,Semantic Model,,,,,,22 governed report tables + disconnected zero-row _Measures host + 50 single-direction relationships.
+P06,P06-V05,TEXT,DAX Validation,,,,,,6 approved base measures runtime-reconciled; 3 restricted financial primitives validated but not exposed.
+P06,P06-V06,TEXT,Governance Gates,,,,,,No consolidated financial KPI; no Coverage filtering; terminology mapping-gated; cross-run aggregation forbidden.
+P06,P06-V07,TEXT,Validation Evidence,,,,,,Power BI runtime validation completed and 92 project regression tests passed.

@@ -1,0 +1,4 @@
+parent_resource_type,contained_resource_type,occurrence_count
+Coverage,Organization,1
+ExplanationOfBenefit,Organization,6
+ExplanationOfBenefit,Practitioner,1

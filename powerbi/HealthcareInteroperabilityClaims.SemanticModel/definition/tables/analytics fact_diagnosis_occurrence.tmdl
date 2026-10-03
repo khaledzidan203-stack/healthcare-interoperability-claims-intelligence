@@ -1,0 +1,100 @@
+table 'analytics fact_diagnosis_occurrence'
+	lineageTag: d8144838-368e-434e-8292-35d881b07ac4
+
+	column fact_diagnosis_occurrence_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: af19e9d2-0380-4ed3-a585-b608a56a6070
+		summarizeBy: none
+		sourceColumn: fact_diagnosis_occurrence_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column pipeline_run_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 26e87060-f1d8-4973-9e65-48d024e04d66
+		summarizeBy: none
+		sourceColumn: pipeline_run_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column patient_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 449e5356-83ec-4862-9ff3-856301f2bee9
+		summarizeBy: none
+		sourceColumn: patient_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column claim_created_date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 95d6697a-6ab1-4ee0-bbae-cdb8d567fee5
+		summarizeBy: none
+		sourceColumn: claim_created_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column diagnosis_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a6fb9386-c4c8-4cec-938e-c06b33c85645
+		summarizeBy: none
+		sourceColumn: diagnosis_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column eob_id
+		dataType: string
+		lineageTag: b04c11db-edb3-40b3-969f-325db8cb4a9f
+		summarizeBy: none
+		sourceColumn: eob_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column diagnosis_sequence
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c732c35a-de72-47e7-b208-56582e4f1bb4
+		summarizeBy: none
+		sourceColumn: diagnosis_sequence
+
+		annotation SummarizationSetBy = Automatic
+
+	column diagnosis_row_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f2472cc-6bf9-4c17-a57b-168000b08a45
+		summarizeBy: none
+		sourceColumn: diagnosis_row_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_record_hash
+		dataType: string
+		isHidden
+		lineageTag: dffbd5ab-1fb5-4d3e-99c2-9606a927f738
+		summarizeBy: none
+		sourceColumn: source_record_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics fact_diagnosis_occurrence' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_fact_diagnosis_occurrence = Source{[Schema="analytics",Item="fact_diagnosis_occurrence"]}[Data]
+				in
+				    analytics_fact_diagnosis_occurrence
+
+	annotation PBI_ResultType = Table
+

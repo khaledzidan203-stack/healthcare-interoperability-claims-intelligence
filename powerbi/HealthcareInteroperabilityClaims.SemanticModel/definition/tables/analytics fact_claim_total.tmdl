@@ -1,0 +1,113 @@
+table 'analytics fact_claim_total'
+	isHidden
+	lineageTag: db36b961-81de-4cd7-8580-66f017b5be4c
+
+	column fact_claim_total_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 16fdf4b1-5c4c-4506-96fe-6808ecfb9bb9
+		summarizeBy: none
+		sourceColumn: fact_claim_total_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column pipeline_run_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 502be377-04a7-4b64-b57e-371bd49c9f67
+		summarizeBy: none
+		sourceColumn: pipeline_run_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column patient_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f4d246de-6bbd-4435-a1ca-3ef0e4f7d7e3
+		summarizeBy: none
+		sourceColumn: patient_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column claim_created_date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b678218f-3d10-4c48-a677-4f90f7044256
+		summarizeBy: none
+		sourceColumn: claim_created_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column financial_concept_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c276c22a-dee1-4fb4-9e7d-c90f732190fb
+		summarizeBy: none
+		sourceColumn: financial_concept_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 056863de-5e27-4a74-aaf3-7f641826f3e3
+		summarizeBy: none
+		sourceColumn: currency_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column eob_id
+		dataType: string
+		lineageTag: f86474c2-9992-4f05-8cf6-7e27f67a7adf
+		summarizeBy: none
+		sourceColumn: eob_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_ordinal
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f82990d6-e91d-4af2-a1bf-6e0ac8d97be8
+		summarizeBy: none
+		sourceColumn: source_ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: double
+		isHidden
+		lineageTag: c72c45ae-d2f9-4220-8b70-8b0eb4de07fa
+		summarizeBy: none
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column source_record_hash
+		dataType: string
+		isHidden
+		lineageTag: 3eb370cf-bd83-4da5-ad43-57c75888a954
+		summarizeBy: none
+		sourceColumn: source_record_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics fact_claim_total' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_fact_claim_total = Source{[Schema="analytics",Item="fact_claim_total"]}[Data]
+				in
+				    analytics_fact_claim_total
+
+	annotation PBI_ResultType = Table
+

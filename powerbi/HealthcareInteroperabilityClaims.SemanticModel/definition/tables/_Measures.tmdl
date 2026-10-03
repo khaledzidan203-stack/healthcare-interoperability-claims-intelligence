@@ -1,0 +1,70 @@
+table _Measures
+	lineageTag: 787ea663-d027-58b7-9960-f043954ff8d9
+
+	measure 'Claim Count' = IF(HASONEVALUE('analytics dim_pipeline_run'[pipeline_run_key]), COUNTROWS('analytics fact_claim'), BLANK())
+		formatString: #,##0
+		displayFolder: 01 Approved Base Measures
+		lineageTag: e32b69f7-e9bf-55f2-8448-7cada074f6a1
+
+	measure 'Item Count' = IF(HASONEVALUE('analytics dim_pipeline_run'[pipeline_run_key]), COUNTROWS('analytics fact_item'), BLANK())
+		formatString: #,##0
+		displayFolder: 01 Approved Base Measures
+		lineageTag: dda57300-d769-5653-8504-980246f96e73
+
+	measure 'Diagnosis Occurrences' = IF(HASONEVALUE('analytics dim_pipeline_run'[pipeline_run_key]), COUNTROWS('analytics fact_diagnosis_occurrence'), BLANK())
+		formatString: #,##0
+		displayFolder: 01 Approved Base Measures
+		lineageTag: 0b925a07-dee6-5fec-9a18-e4bf0723db4d
+
+	measure 'Procedure Occurrences' = IF(HASONEVALUE('analytics dim_pipeline_run'[pipeline_run_key]), COUNTROWS('analytics fact_procedure_occurrence'), BLANK())
+		formatString: #,##0
+		displayFolder: 01 Approved Base Measures
+		lineageTag: cd718860-a8da-5a2a-a99d-842b871352e3
+
+	measure 'Care Team Occurrences' = IF(HASONEVALUE('analytics dim_pipeline_run'[pipeline_run_key]), COUNTROWS('analytics fact_care_team_occurrence'), BLANK())
+		formatString: #,##0
+		displayFolder: 01 Approved Base Measures
+		lineageTag: ec878a55-5f65-512d-8175-8c32a77d1b37
+
+	measure 'Supporting Info Occurrences' = IF(HASONEVALUE('analytics dim_pipeline_run'[pipeline_run_key]), COUNTROWS('analytics fact_supporting_info_occurrence'), BLANK())
+		formatString: #,##0
+		displayFolder: 01 Approved Base Measures
+		lineageTag: 00fee38a-0f87-53ff-8f8b-439a35f22b05
+
+	measure 'Claim Total Amount' = IF(HASONEVALUE('analytics dim_pipeline_run'[pipeline_run_key]) && HASONEVALUE('analytics dim_financial_concept'[financial_concept_key]) && HASONEVALUE('analytics dim_currency'[currency_key]), SUM('analytics fact_claim_total'[amount]), BLANK())
+		formatString: #,##0.00
+		isHidden
+		displayFolder: 90 Restricted Financial Primitives
+		lineageTag: fcb5bfc7-78f9-553a-b932-81ab8926fdfb
+
+	measure 'Claim Adjudication Amount' = IF(HASONEVALUE('analytics dim_pipeline_run'[pipeline_run_key]) && HASONEVALUE('analytics dim_financial_concept'[financial_concept_key]) && HASONEVALUE('analytics dim_currency'[currency_key]), SUM('analytics fact_claim_adjudication'[amount]), BLANK())
+		formatString: #,##0.00
+		isHidden
+		displayFolder: 90 Restricted Financial Primitives
+		lineageTag: dcd480ee-f9e4-5cc0-9c62-0e5ad64fe791
+
+	measure 'Item Adjudication Amount' = IF(HASONEVALUE('analytics dim_pipeline_run'[pipeline_run_key]) && HASONEVALUE('analytics dim_financial_concept'[financial_concept_key]) && HASONEVALUE('analytics dim_currency'[currency_key]), SUM('analytics fact_item_adjudication'[amount]), BLANK())
+		formatString: #,##0.00
+		isHidden
+		displayFolder: 90 Restricted Financial Primitives
+		lineageTag: 9c1b44c3-70e7-5b44-b219-cd7eae2772f8
+
+	column Placeholder
+		dataType: string
+		isHidden
+		lineageTag: 637480cd-a2f3-536a-99b9-43ca9c22ed46
+		summarizeBy: none
+		sourceColumn: Placeholder
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Placeholder = nullable text], {})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

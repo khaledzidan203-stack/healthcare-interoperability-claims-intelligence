@@ -1,0 +1,25 @@
+semantic_name,physical_table,entity_type,inclusion,visibility,business_status,notes
+DimDate,dim_date,DIMENSION,INCLUDED,VISIBLE,APPROVED,Governed continuous calendar dimension.
+DimPipelineRun,dim_pipeline_run,DIMENSION,INCLUDED,HIDDEN,TECHNICAL,Lineage and snapshot control only.
+DimPatient,dim_patient,DIMENSION,INCLUDED,HIDDEN,TECHNICAL,Conformed patient dimension; identifiers not intended as default report fields.
+DimCoverage,dim_coverage,DIMENSION,EXCLUDED_CURRENT_RELEASE,HIDDEN,LOAD_GATED,Current claim associations contain display-only Coverage identity.
+DimFinancialConcept,dim_financial_concept,DIMENSION,INCLUDED,VISIBLE,GOVERNED_RESTRICTED,Required for exact financial-concept context.
+DimCurrency,dim_currency,DIMENSION,INCLUDED,VISIBLE,GOVERNED_RESTRICTED,Required for financial aggregation safety.
+DimClaimType,dim_claim_type,DIMENSION,INCLUDED,VISIBLE,MAPPING_GATED,Structural coding retained; authoritative mapping pending.
+DimServiceCode,dim_service_code,DIMENSION,INCLUDED,VISIBLE,MAPPING_GATED,Structural coding retained; authoritative mapping pending.
+DimDiagnosis,dim_diagnosis,DIMENSION,INCLUDED,VISIBLE,MAPPING_GATED,Structural coding retained; authoritative mapping pending.
+DimProcedure,dim_procedure,DIMENSION,INCLUDED,VISIBLE,MAPPING_GATED,Structural coding retained; authoritative mapping pending.
+DimProvider,dim_provider,DIMENSION,INCLUDED,VISIBLE,APPROVED_WITH_UNKNOWN,One governed Unknown Provider member is valid.
+DimPayer,dim_payer,DIMENSION,INCLUDED,VISIBLE,APPROVED,Current payer identities are explicitly resolved.
+DimSupportingInfoCategory,dim_supporting_info_category,DIMENSION,INCLUDED,VISIBLE,MAPPING_GATED,Structural coding retained; authoritative mapping pending.
+FactClaim,fact_claim,FACT,INCLUDED,VISIBLE,APPROVED,One row per governed EOB claim.
+FactItem,fact_item,FACT,INCLUDED,VISIBLE,APPROVED,One row per governed EOB item.
+FactClaimTotal,fact_claim_total,FACT,INCLUDED,HIDDEN,FINANCIAL_RESTRICTED,Exact-concept financial primitive only.
+FactClaimAdjudication,fact_claim_adjudication,FACT,INCLUDED,HIDDEN,FINANCIAL_RESTRICTED,Must remain separate from other financial grains.
+FactItemAdjudication,fact_item_adjudication,FACT,INCLUDED,HIDDEN,FINANCIAL_RESTRICTED,Must remain separate from other financial grains.
+FactDiagnosisOccurrence,fact_diagnosis_occurrence,FACT,INCLUDED,VISIBLE,APPROVED,Occurrence grain; not distinct-patient count.
+FactProcedureOccurrence,fact_procedure_occurrence,FACT,INCLUDED,VISIBLE,APPROVED,Occurrence grain.
+FactCareTeamOccurrence,fact_care_team_occurrence,FACT,INCLUDED,VISIBLE,APPROVED,Care-team occurrence grain.
+FactSupportingInfoOccurrence,fact_supporting_info_occurrence,FACT,INCLUDED,VISIBLE,APPROVED,Supporting-information occurrence grain.
+FactItemDetail,fact_item_detail,FACT,INCLUDED,VISIBLE,APPROVED,Nested item-detail grain.
+BridgeClaimCoverage,bridge_claim_coverage,BRIDGE,EXCLUDED_CURRENT_RELEASE,HIDDEN,LOAD_GATED,Association preserved physically but current Coverage identity is unresolved.

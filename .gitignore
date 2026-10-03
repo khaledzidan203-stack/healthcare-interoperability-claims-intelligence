@@ -1,0 +1,80 @@
+# ============================================================
+# Healthcare Interoperability & Claims Intelligence Platform
+# Git Ignore Policy
+# ============================================================
+
+# Secrets / credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# OAuth / token artifacts
+*token*.json
+*oauth*.json
+*credentials*.json
+.auth/
+.tokens/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Logs / runtime artifacts
+*.log
+logs/*
+!logs/.gitkeep
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*~
+Thumbs.db
+.DS_Store
+
+# IDE local state
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+
+# Local raw/staging/processed data
+data/raw/*
+data/staging/*
+data/processed/*
+
+# Preserve folders
+!data/raw/.gitkeep
+!data/staging/.gitkeep
+!data/processed/.gitkeep
+
+# Power BI local/cache artifacts
+*.pbix
+*.pbit
+*.abf
+*.cache
+
+# Release-only local artifact exclusions
+# Python compiled bytecode
+*.pyc
+# Power BI local workspace and cache state
+powerbi/**/.pbi/
+
+# Public-release source-reference boundary
+# CMS synthetic credential matrix is retained locally for sandbox discovery only.
+data/source_reference/synthetic_users/synthetic_users_by_claim_count_full.csv

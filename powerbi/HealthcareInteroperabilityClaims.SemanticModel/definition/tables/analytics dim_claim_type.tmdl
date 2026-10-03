@@ -1,0 +1,80 @@
+table 'analytics dim_claim_type'
+	lineageTag: d4457399-7a30-4c1b-9749-fae64d275201
+
+	column claim_type_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 01b7ad1c-77b1-46f8-b217-3c35c68408d7
+		summarizeBy: none
+		sourceColumn: claim_type_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column system_uri
+		dataType: string
+		lineageTag: 359e2901-c330-46e8-9e81-512498031cc6
+		summarizeBy: none
+		sourceColumn: system_uri
+
+		annotation SummarizationSetBy = Automatic
+
+	column code
+		dataType: string
+		lineageTag: d2f9ca44-af25-4daa-8aaa-32e08e200b70
+		summarizeBy: none
+		sourceColumn: code
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_display
+		dataType: string
+		lineageTag: 856ec7ef-deff-491c-b536-b3afc00b0e2d
+		summarizeBy: none
+		sourceColumn: source_display
+
+		annotation SummarizationSetBy = Automatic
+
+	column authoritative_display
+		dataType: string
+		lineageTag: 3bbd535d-8e52-44dd-8463-5cdfef4e70e4
+		summarizeBy: none
+		sourceColumn: authoritative_display
+
+		annotation SummarizationSetBy = Automatic
+
+	column mapping_status
+		dataType: string
+		lineageTag: 402f4c46-7436-43cd-813c-aa34478bd9c5
+		summarizeBy: none
+		sourceColumn: mapping_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column authority
+		dataType: string
+		lineageTag: 553e5a57-10f3-41b0-a7f5-1df5cb2061fb
+		summarizeBy: none
+		sourceColumn: authority
+
+		annotation SummarizationSetBy = Automatic
+
+	column authority_version
+		dataType: string
+		lineageTag: 8765f452-2ff4-42e5-8be0-9bc6377d57f5
+		summarizeBy: none
+		sourceColumn: authority_version
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics dim_claim_type' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_dim_claim_type = Source{[Schema="analytics",Item="dim_claim_type"]}[Data]
+				in
+				    analytics_dim_claim_type
+
+	annotation PBI_ResultType = Table
+

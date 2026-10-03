@@ -1,0 +1,10 @@
+metric_id,name,source_fact,status,aggregation,grain,unit,notes
+M001,Claim Count,FactClaim,APPROVED_BASE_MEASURE,COUNTROWS,Claim,Count,Count of governed claim rows.
+M002,Item Count,FactItem,APPROVED_BASE_MEASURE,COUNTROWS,Item,Count,Count of governed EOB item rows.
+M003,Diagnosis Occurrences,FactDiagnosisOccurrence,APPROVED_BASE_MEASURE,COUNTROWS,Diagnosis occurrence,Count,"Occurrence count, not unique diagnoses or patients."
+M004,Procedure Occurrences,FactProcedureOccurrence,APPROVED_BASE_MEASURE,COUNTROWS,Procedure occurrence,Count,Occurrence count.
+M005,Care Team Occurrences,FactCareTeamOccurrence,APPROVED_BASE_MEASURE,COUNTROWS,Care-team occurrence,Count,Occurrence count.
+M006,Supporting Info Occurrences,FactSupportingInfoOccurrence,APPROVED_BASE_MEASURE,COUNTROWS,Supporting-info occurrence,Count,Occurrence count.
+M007,Claim Total Amount,FactClaimTotal,RESTRICTED_FINANCIAL_PRIMITIVE,SUM_AMOUNT_EXACT_CONCEPT_AND_CURRENCY_ONLY,Claim total concept occurrence,Currency,Not a user-facing consolidated KPI. One financial concept and one currency context required.
+M008,Claim Adjudication Amount,FactClaimAdjudication,RESTRICTED_FINANCIAL_PRIMITIVE,SUM_AMOUNT_EXACT_CONCEPT_AND_CURRENCY_ONLY,Claim adjudication concept occurrence,Currency,Do not combine with Claim Total or Item Adjudication.
+M009,Item Adjudication Amount,FactItemAdjudication,RESTRICTED_FINANCIAL_PRIMITIVE,SUM_AMOUNT_EXACT_CONCEPT_AND_CURRENCY_ONLY,Item adjudication concept occurrence,Currency,Do not combine with other financial grains.

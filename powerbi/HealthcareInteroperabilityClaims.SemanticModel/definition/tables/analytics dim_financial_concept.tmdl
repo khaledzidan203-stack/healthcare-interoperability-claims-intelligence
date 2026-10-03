@@ -1,0 +1,104 @@
+table 'analytics dim_financial_concept'
+	lineageTag: 1aacbc67-cd3d-40c3-9976-8c2059d04dc2
+
+	column financial_concept_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5727c065-baef-4c7e-bcd0-5cddb9c5bb40
+		summarizeBy: none
+		sourceColumn: financial_concept_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column system_uri
+		dataType: string
+		lineageTag: afb97f55-57e2-4587-97c1-bfe8d585d2b6
+		summarizeBy: none
+		sourceColumn: system_uri
+
+		annotation SummarizationSetBy = Automatic
+
+	column code
+		dataType: string
+		lineageTag: 455d1cc3-1f12-4a75-8d64-8dcd27b4bf2f
+		summarizeBy: none
+		sourceColumn: code
+
+		annotation SummarizationSetBy = Automatic
+
+	column authority_version
+		dataType: string
+		lineageTag: e52512e1-aeba-4b22-b36d-625972a70ca8
+		summarizeBy: none
+		sourceColumn: authority_version
+
+		annotation SummarizationSetBy = Automatic
+
+	column authoritative_display
+		dataType: string
+		lineageTag: 2c5d13bb-df32-42df-9e0a-3e69b3d18bdd
+		summarizeBy: none
+		sourceColumn: authoritative_display
+
+		annotation SummarizationSetBy = Automatic
+
+	column semantic_role
+		dataType: string
+		lineageTag: 85120786-de71-4c94-8fd1-e471f342ee2b
+		summarizeBy: none
+		sourceColumn: semantic_role
+
+		annotation SummarizationSetBy = Automatic
+
+	column aggregation_rule
+		dataType: string
+		lineageTag: a2552c93-1757-4bd3-9e5e-75fa083558e5
+		summarizeBy: none
+		sourceColumn: aggregation_rule
+
+		annotation SummarizationSetBy = Automatic
+
+	column authority
+		dataType: string
+		lineageTag: fec7fde7-d22c-4cab-90f3-cb6d3eb4a66a
+		summarizeBy: none
+		sourceColumn: authority
+
+		annotation SummarizationSetBy = Automatic
+
+	column authority_url
+		dataType: string
+		lineageTag: 3f4ddd85-da31-4f62-947b-8168a3781e67
+		summarizeBy: none
+		sourceColumn: authority_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column resolution_status
+		dataType: string
+		lineageTag: 8b3a8511-6072-4709-b502-210584fea999
+		summarizeBy: none
+		sourceColumn: resolution_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column kpi_status
+		dataType: string
+		lineageTag: bbd8ad50-d0a2-45e4-a927-b523c692d060
+		summarizeBy: none
+		sourceColumn: kpi_status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics dim_financial_concept' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_dim_financial_concept = Source{[Schema="analytics",Item="dim_financial_concept"]}[Data]
+				in
+				    analytics_dim_financial_concept
+
+	annotation PBI_ResultType = Table
+

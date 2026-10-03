@@ -1,0 +1,5 @@
+entity,grain,identity_policy,load_state
+BridgeClaimCoverage,One EOB insurance[] association,Association always receives its own deterministic key; Coverage identity only when explicit source identity exists,ASSOCIATION_READY_COVERAGE_DIMENSION_GATED
+ProviderReference,One provider reference occurrence,Reference/identifier/contained identity only; never infer from absence or display,39 IDENTITY_READY / 2 SOURCE_IDENTITY_NOT_EXPLICIT
+PayerReference,One payer reference occurrence,Reference/identifier/contained identity only,IDENTITY_READY
+ContainedResource,One contained FHIR resource,Parent-scoped contained identity,REFERENCE_RESOLUTION_READY

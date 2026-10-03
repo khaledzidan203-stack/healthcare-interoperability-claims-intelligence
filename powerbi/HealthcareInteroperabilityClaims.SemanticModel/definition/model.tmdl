@@ -1,0 +1,41 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["analytics dim_date","analytics dim_pipeline_run","analytics dim_patient","analytics dim_financial_concept","analytics dim_currency","analytics dim_claim_type","analytics dim_service_code","analytics dim_diagnosis","analytics dim_procedure","analytics dim_provider","analytics dim_payer","analytics dim_supporting_info_category","analytics fact_claim","analytics fact_item","analytics fact_claim_total","analytics fact_claim_adjudication","analytics fact_item_adjudication","analytics fact_diagnosis_occurrence","analytics fact_procedure_occurrence","analytics fact_care_team_occurrence","analytics fact_supporting_info_occurrence","analytics fact_item_detail","_Measures"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'analytics dim_claim_type'
+ref table 'analytics dim_currency'
+ref table 'analytics dim_date'
+ref table 'analytics dim_diagnosis'
+ref table 'analytics dim_financial_concept'
+ref table 'analytics dim_patient'
+ref table 'analytics dim_payer'
+ref table 'analytics dim_pipeline_run'
+ref table 'analytics dim_procedure'
+ref table 'analytics dim_provider'
+ref table 'analytics dim_service_code'
+ref table 'analytics dim_supporting_info_category'
+ref table 'analytics fact_care_team_occurrence'
+ref table 'analytics fact_claim'
+ref table 'analytics fact_claim_adjudication'
+ref table 'analytics fact_claim_total'
+ref table 'analytics fact_diagnosis_occurrence'
+ref table 'analytics fact_item'
+ref table 'analytics fact_item_adjudication'
+ref table 'analytics fact_item_detail'
+ref table 'analytics fact_procedure_occurrence'
+ref table 'analytics fact_supporting_info_occurrence'
+ref table _Measures
+
+ref cultureInfo en-US
+

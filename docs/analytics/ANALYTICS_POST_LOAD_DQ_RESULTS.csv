@@ -1,0 +1,34 @@
+rule_id,dimension,status,observed,expected,notes
+A-DQ-001,Completeness,PASS,3245,3245,Immutable 5C dry-run package baseline.
+A-DQ-002,Validity,PASS,0,0,Full project unit/regression suite.
+A-DQ-003,Governance,PASS,governance=STAGING_DQ_VALIDATED;analytics=STAGING_DQ_VALIDATED,governance=STAGING_DQ_VALIDATED;analytics=STAGING_DQ_VALIDATED,5E is validation-only. Run must not already be promoted.
+A-DQ-004,Schema,PASS,12,12,Physical STAGING table contract confirmed by 5E.1.
+A-DQ-005,Schema,PASS,24,24,Physical Analytics table contract.
+A-DQ-006,Completeness,PASS,678,678,Governed PostgreSQL STAGING population.
+A-DQ-007,Completeness,PASS,0,0,All 24 Analytics tables must reconcile to immutable package.
+A-DQ-008,Completeness,PASS,total=3245;dim=2563;fact=676;bridge=6,total=3245;dim=2563;fact=676;bridge=6,Approved post-load warehouse population.
+A-DQ-009,Completeness,PASS,0,0,Every approved analytical fact grain must preserve STAGING row population.
+A-DQ-010,Lineage,PASS,0,0,Independent source-record hash multiset reconciliation.
+A-DQ-011,Uniqueness,PASS,0,0,Approved Analytics fact grains.
+A-DQ-012,Consistency,PASS,1,1,Current warehouse is governed as one analytical snapshot.
+A-DQ-013,Consistency,PASS,0,0,No Analytics facts/bridge rows from another pipeline run.
+A-DQ-014,Consistency,PASS,2389,2389,DimDate must be continuous.
+A-DQ-015,Referential Integrity,PASS,0,0,All analytical date roles resolve to DimDate.
+A-DQ-016,Uniqueness,PASS,0,0,At most one current SCD member per Patient/Coverage business key.
+A-DQ-017,Validity,PASS,1,1,Exactly one governed Unknown Provider.
+A-DQ-018,Consistency,PASS,claim=2;careteam=0,claim=2;careteam=0,Only source-limited claim-provider occurrences use Unknown.
+A-DQ-019,Validity,PASS,0,0,Current payer identities are explicit.
+A-DQ-020,Completeness,PASS,6,6,All source Claim/Coverage associations preserved.
+A-DQ-021,Governance,PASS,linked=0;display_only=6,linked=0;display_only=6,No Coverage identity inferred from display text.
+A-DQ-022,Uniqueness,PASS,0,0,Deterministic bridge association keys.
+A-DQ-023,Completeness,PASS,450,450,"Claim Total, Claim Adjudication and Item Adjudication remain separate."
+A-DQ-024,Validity,PASS,74,74,Authoritative Financial Concept dimension.
+A-DQ-025,Governance,PASS,0,0,No consolidated user-facing financial KPI is approved.
+A-DQ-026,Accuracy,PASS,0,0,Financial system/code/amount/value/currency reconcile at original source grain.
+A-DQ-027,Source Semantics,WARNING,19,preserve source state,Some adjudication rows have no typed numeric payload. They remain preserved structurally and by source hash; do not coerce them to zero.
+A-DQ-028,Referential Integrity,PASS,0,0,All analytical facts resolve to Patient.
+A-DQ-029,Model Safety,PASS,0,0,No direct Fact-to-Fact physical relationship.
+A-DQ-030,Semantic Governance,WARNING,76,documented mapping gate,"Structural code dimensions are loaded, but authoritative non-financial terminology mapping is still pending."
+A-DQ-031,Semantic Governance,WARNING,6,6,Coverage association remains load-gated because source exposes display-only identity.
+A-DQ-032,Lineage,PASS,0,0,5E must not modify immutable source/package manifests.
+A-DQ-033,Governance,PASS,governance=STAGING_DQ_VALIDATED;analytics=STAGING_DQ_VALIDATED,governance=STAGING_DQ_VALIDATED;analytics=STAGING_DQ_VALIDATED,Corrected 5E is deliberately read-only with respect to database state.

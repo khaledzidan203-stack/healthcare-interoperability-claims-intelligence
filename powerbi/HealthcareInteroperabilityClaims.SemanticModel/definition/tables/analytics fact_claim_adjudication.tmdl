@@ -1,0 +1,124 @@
+table 'analytics fact_claim_adjudication'
+	isHidden
+	lineageTag: 0bcff49d-310b-4acf-b2ca-aec4d0f7aaad
+
+	column fact_claim_adjudication_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 628cc6fe-2ca9-42c9-95d4-86322b40b555
+		summarizeBy: none
+		sourceColumn: fact_claim_adjudication_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column pipeline_run_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1c8abb8c-ff75-4c43-93b4-091283d9a6a5
+		summarizeBy: none
+		sourceColumn: pipeline_run_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column patient_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1d3db9e3-a5b8-439a-a155-1a6a3a8c05f8
+		summarizeBy: none
+		sourceColumn: patient_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column claim_created_date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4c8e0e82-1b10-46dc-a377-3e4e21a50a2d
+		summarizeBy: none
+		sourceColumn: claim_created_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column financial_concept_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b7c98d4e-21c7-4397-a891-37b2b81ec1ef
+		summarizeBy: none
+		sourceColumn: financial_concept_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8fc19661-f9fb-4027-b370-4660ed68feaa
+		summarizeBy: none
+		sourceColumn: currency_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column eob_id
+		dataType: string
+		lineageTag: e3e8e4ab-3c8d-4adb-a0ed-3ab53b0ff8ca
+		summarizeBy: none
+		sourceColumn: eob_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_ordinal
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 96f7144b-5678-444d-b462-dd546186b05f
+		summarizeBy: none
+		sourceColumn: source_ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: double
+		isHidden
+		lineageTag: 9856c87c-515e-4e42-9754-0608058a877f
+		summarizeBy: none
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column value
+		dataType: double
+		isHidden
+		lineageTag: 62b23fbb-984c-442f-92f7-f56958c2ca86
+		summarizeBy: none
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column source_record_hash
+		dataType: string
+		isHidden
+		lineageTag: 0269da55-b0bb-40eb-b3b2-97f794f1ab1d
+		summarizeBy: none
+		sourceColumn: source_record_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics fact_claim_adjudication' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_fact_claim_adjudication = Source{[Schema="analytics",Item="fact_claim_adjudication"]}[Data]
+				in
+				    analytics_fact_claim_adjudication
+
+	annotation PBI_ResultType = Table
+

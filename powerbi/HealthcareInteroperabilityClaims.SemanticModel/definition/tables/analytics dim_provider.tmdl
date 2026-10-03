@@ -1,0 +1,90 @@
+table 'analytics dim_provider'
+	lineageTag: a7d4f366-b4b1-4d2b-98e4-cfcb50b28bc4
+
+	column provider_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 91c62270-4a3a-458e-84dc-7c96df309a17
+		summarizeBy: none
+		sourceColumn: provider_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column identity_key_sha256
+		dataType: string
+		isHidden
+		lineageTag: e40f9a73-a552-4862-893a-4c64cd561004
+		summarizeBy: none
+		sourceColumn: identity_key_sha256
+
+		annotation SummarizationSetBy = Automatic
+
+	column identity_status
+		dataType: string
+		lineageTag: 335e0e61-df34-44e3-902d-8188b6f87fc5
+		summarizeBy: none
+		sourceColumn: identity_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_resource_type
+		dataType: string
+		lineageTag: ac01ee43-cc9e-4f95-8bba-1e33b0c2e58a
+		summarizeBy: none
+		sourceColumn: target_resource_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column identifier_system
+		dataType: string
+		lineageTag: 5f6161e8-bd5f-4780-bb84-094c6aab8d65
+		summarizeBy: none
+		sourceColumn: identifier_system
+
+		annotation SummarizationSetBy = Automatic
+
+	column identifier_value
+		dataType: string
+		lineageTag: 0b7456fc-98ca-4bb7-8571-c3f542ac6dc6
+		summarizeBy: none
+		sourceColumn: identifier_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column display
+		dataType: string
+		lineageTag: 4a16ac5e-b18a-4c89-8a1c-a8351c9692e8
+		summarizeBy: none
+		sourceColumn: display
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_unknown
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 93a80749-4124-42cb-a3e2-d986863f6747
+		summarizeBy: none
+		sourceColumn: is_unknown
+
+		annotation SummarizationSetBy = Automatic
+
+	column attributes_json
+		dataType: string
+		lineageTag: 985dd7e1-5ebf-4b98-a156-1a8b5eae44d3
+		summarizeBy: none
+		sourceColumn: attributes_json
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics dim_provider' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_dim_provider = Source{[Schema="analytics",Item="dim_provider"]}[Data]
+				in
+				    analytics_dim_provider
+
+	annotation PBI_ResultType = Table
+

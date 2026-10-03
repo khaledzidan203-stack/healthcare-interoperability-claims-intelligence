@@ -1,0 +1,154 @@
+table 'analytics fact_claim'
+	lineageTag: 60542982-4307-40a7-97b6-298a8e515aa8
+
+	column fact_claim_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c6a79093-ad70-4118-b1d6-6d836cf6d753
+		summarizeBy: none
+		sourceColumn: fact_claim_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column pipeline_run_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 92e7b67c-3093-4fd8-bcfd-7d5d5dfdbb0a
+		summarizeBy: none
+		sourceColumn: pipeline_run_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column patient_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: da82d9bd-7f61-4a6b-8c92-979b3587ee21
+		summarizeBy: none
+		sourceColumn: patient_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column claim_created_date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3110c04a-bf10-4e93-8f44-99bc3106805a
+		summarizeBy: none
+		sourceColumn: claim_created_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column billable_start_date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: aa6f5a58-378d-4d10-8f89-4897ffc5d209
+		summarizeBy: none
+		sourceColumn: billable_start_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column billable_end_date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b07a163e-fb4f-430f-a679-a588b7c69ed1
+		summarizeBy: none
+		sourceColumn: billable_end_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column claim_type_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4e0c56e1-1a2b-4bf9-b8e7-1e25cbdc9606
+		summarizeBy: none
+		sourceColumn: claim_type_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column provider_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: cb731c23-55cc-4092-930e-a900726b9d8f
+		summarizeBy: none
+		sourceColumn: provider_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column payer_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 814dd2f7-b0f0-40f3-831b-a2187c3734d5
+		summarizeBy: none
+		sourceColumn: payer_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column eob_id
+		dataType: string
+		lineageTag: 9f3fb83e-f8f2-456e-a0b3-3605efd4e337
+		summarizeBy: none
+		sourceColumn: eob_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column claim_status
+		dataType: string
+		lineageTag: 9d3ff139-5301-4f74-8e26-6605fab198a0
+		summarizeBy: none
+		sourceColumn: claim_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column claim_use
+		dataType: string
+		lineageTag: 48b5ee19-d1a0-46ff-af7b-416b016e7ee0
+		summarizeBy: none
+		sourceColumn: claim_use
+
+		annotation SummarizationSetBy = Automatic
+
+	column claim_outcome
+		dataType: string
+		lineageTag: 595ca851-7b18-45fb-92ed-e1354b2ce3f1
+		summarizeBy: none
+		sourceColumn: claim_outcome
+
+		annotation SummarizationSetBy = Automatic
+
+	column claim_row_count
+		dataType: int64
+		formatString: 0
+		lineageTag: a2814d3f-5768-4fe5-8996-12e5a2d07d9e
+		summarizeBy: none
+		sourceColumn: claim_row_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_record_hash
+		dataType: string
+		isHidden
+		lineageTag: 1e0c88c3-c18b-4fc6-ad74-763b25955056
+		summarizeBy: none
+		sourceColumn: source_record_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics fact_claim' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_fact_claim = Source{[Schema="analytics",Item="fact_claim"]}[Data]
+				in
+				    analytics_fact_claim
+
+	annotation PBI_ResultType = Table
+

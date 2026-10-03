@@ -1,0 +1,11 @@
+grain_id,proposed_entity,row_definition,source_staging,business_key,parent_grain,analytical_role,financial_grain,status
+G01,FactClaim,One row = one FHIR ExplanationOfBenefit claim within one pipeline run.,staging.eob_claim,pipeline_run_id + eob_id,,CORE_FACT,NO,APPROVED_GRAIN
+G02,FactItem,One row = one EOB item within one claim and pipeline run.,staging.eob_item,pipeline_run_id + eob_id + item_sequence,FactClaim,CORE_FACT,NO,APPROVED_GRAIN
+G03,FactClaimTotal,One row = one claim-level EOB total element at its exact source ordinal.,staging.eob_total,pipeline_run_id + eob_id + source_ordinal,FactClaim,CLAIM_FINANCIAL_FACT,CLAIM_TOTAL,APPROVED_GRAIN
+G04,FactClaimAdjudication,One row = one claim-level adjudication element at its exact source ordinal.,staging.eob_adjudication,pipeline_run_id + eob_id + source_ordinal,FactClaim,CLAIM_ADJUDICATION_FACT,CLAIM_ADJUDICATION,APPROVED_GRAIN
+G05,FactItemAdjudication,One row = one adjudication element for one EOB item at its exact source ordinal.,staging.eob_item_adjudication,pipeline_run_id + eob_id + item_sequence + source_ordinal,FactItem,ITEM_ADJUDICATION_FACT,ITEM_ADJUDICATION,APPROVED_GRAIN
+G06,FactDiagnosisOccurrence,One row = one diagnosis occurrence attached to one claim.,staging.eob_diagnosis,pipeline_run_id + eob_id + diagnosis_sequence,FactClaim,FACTLESS_OCCURRENCE,NO,APPROVED_GRAIN
+G07,FactProcedureOccurrence,One row = one procedure occurrence attached to one claim.,staging.eob_procedure,pipeline_run_id + eob_id + procedure_sequence,FactClaim,FACTLESS_OCCURRENCE,NO,APPROVED_GRAIN
+G08,FactCareTeamOccurrence,One row = one care-team participation occurrence attached to one claim.,staging.eob_care_team,pipeline_run_id + eob_id + careteam_sequence,FactClaim,FACTLESS_OCCURRENCE,NO,APPROVED_GRAIN
+G09,FactSupportingInfoOccurrence,One row = one supporting-information occurrence attached to one claim.,staging.eob_supporting_info,pipeline_run_id + eob_id + supporting_info_sequence,FactClaim,FACTLESS_OCCURRENCE,NO,APPROVED_GRAIN
+G10,FactItemDetail,One row = one EOB item detail element within one claim item.,staging.eob_item_detail,pipeline_run_id + eob_id + item_sequence + detail_sequence,FactItem,SECONDARY_CHILD_FACT,NO,APPROVED_GRAIN

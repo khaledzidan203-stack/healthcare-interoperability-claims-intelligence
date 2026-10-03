@@ -1,0 +1,8 @@
+﻿PageID,PageName,Purpose,PageType,TimeFilters,HomeButton,MethodologyNote
+P00,INDEX,Navigation hub and report scope entry point.,NAVIGATION,NONE,NO,YES
+P01,Executive Overview,High-level governed activity summary across the six approved base measures.,ANALYTICAL,Year;Quarter,YES,YES
+P02,Claims Activity,"Claim volume, status, use, outcome and claim-type context.",ANALYTICAL,Year;Quarter,YES,YES
+P03,Clinical & Coding,"Items, diagnosis, procedure and supporting-information occurrence analysis.",ANALYTICAL,Year;Quarter,YES,YES
+P04,Provider & Payer,"Provider, payer and care-team context without coverage inference.",ANALYTICAL,Year;Quarter,YES,YES
+P05,Terminology & Governance,Expose source terminology mapping state and governance limitations.,GOVERNANCE,Year;Quarter,YES,YES
+P06,Methodology & Validation,"Document source, architecture, validation evidence, gates and limitations.",METHODOLOGY,NONE,YES,YES

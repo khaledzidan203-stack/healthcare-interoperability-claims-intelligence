@@ -1,0 +1,5 @@
+gate_id,subject,state,rule
+SG-001,Financial KPIs,BLOCKED,No consolidated or cross-grain financial KPI may be published.
+SG-002,Coverage filtering,BLOCKED,DimCoverage and BridgeClaimCoverage are excluded from the current semantic release.
+SG-003,Non-financial terminology,MAPPING_GATED,Source code/display may be shown with limitation; authoritative semantic labels are not yet approved.
+SG-004,Pipeline snapshots,SINGLE_SNAPSHOT_ONLY,Cross-run aggregation is forbidden.

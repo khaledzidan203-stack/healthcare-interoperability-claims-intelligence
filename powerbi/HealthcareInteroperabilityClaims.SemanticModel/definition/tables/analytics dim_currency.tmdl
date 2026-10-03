@@ -1,0 +1,40 @@
+table 'analytics dim_currency'
+	lineageTag: 78530333-c96b-4fb0-8c76-2de02724460b
+
+	column currency_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5ab99a8d-86a1-4d9d-aa3e-fc97a771510a
+		summarizeBy: none
+		sourceColumn: currency_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency_code
+		dataType: string
+		lineageTag: 8d34dce4-691a-4951-8bb4-bc6eaee40727
+		summarizeBy: none
+		sourceColumn: currency_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency_name
+		dataType: string
+		lineageTag: 4c06fc1b-0f6b-4023-8b8e-343c960c3729
+		summarizeBy: none
+		sourceColumn: currency_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics dim_currency' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_dim_currency = Source{[Schema="analytics",Item="dim_currency"]}[Data]
+				in
+				    analytics_dim_currency
+
+	annotation PBI_ResultType = Table
+

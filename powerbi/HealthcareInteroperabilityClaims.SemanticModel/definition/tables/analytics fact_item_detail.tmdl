@@ -1,0 +1,128 @@
+table 'analytics fact_item_detail'
+	lineageTag: be78dea4-d922-49fd-8b05-1005ac4f37d7
+
+	column fact_item_detail_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 050dfbd9-ea4f-4220-b25e-efd9b191a57b
+		summarizeBy: none
+		sourceColumn: fact_item_detail_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column pipeline_run_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 26d93a40-0f37-4e73-9e19-8f8aa5bdeb63
+		summarizeBy: none
+		sourceColumn: pipeline_run_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column patient_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7de160f0-5080-4bf4-8dc9-11701bb2f8c9
+		summarizeBy: none
+		sourceColumn: patient_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column claim_created_date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 60e0d650-7d8f-4376-945a-69649f7d292a
+		summarizeBy: none
+		sourceColumn: claim_created_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column service_code_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a59e3d33-c124-408d-859e-d2a679f82fb6
+		summarizeBy: none
+		sourceColumn: service_code_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column eob_id
+		dataType: string
+		lineageTag: 8878526c-a261-4e47-9b59-1bac64c397ae
+		summarizeBy: none
+		sourceColumn: eob_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_sequence
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 02bcbcbe-d7d4-4ff9-8e56-f8261b20a21d
+		summarizeBy: none
+		sourceColumn: item_sequence
+
+		annotation SummarizationSetBy = Automatic
+
+	column detail_sequence
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b777f544-7598-4d75-ad0b-72acb17a99b7
+		summarizeBy: none
+		sourceColumn: detail_sequence
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity_value
+		dataType: double
+		lineageTag: f46bb69d-2159-430d-9833-e1ed0308ca43
+		summarizeBy: none
+		sourceColumn: quantity_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column quantity_unit
+		dataType: string
+		lineageTag: 91f84bd2-f743-487d-bd09-34dbfe4c1a1b
+		summarizeBy: none
+		sourceColumn: quantity_unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_detail_row_count
+		dataType: int64
+		formatString: 0
+		lineageTag: e137faed-ccfb-4ebc-b5ad-dfce0e5d17f6
+		summarizeBy: none
+		sourceColumn: item_detail_row_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_record_hash
+		dataType: string
+		isHidden
+		lineageTag: 92df4825-1868-4f25-94e7-b4ce325fcf2f
+		summarizeBy: none
+		sourceColumn: source_record_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics fact_item_detail' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_fact_item_detail = Source{[Schema="analytics",Item="fact_item_detail"]}[Data]
+				in
+				    analytics_fact_item_detail
+
+	annotation PBI_ResultType = Table
+

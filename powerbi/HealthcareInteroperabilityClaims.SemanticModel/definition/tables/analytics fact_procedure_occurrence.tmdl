@@ -1,0 +1,110 @@
+table 'analytics fact_procedure_occurrence'
+	lineageTag: f28d3206-0633-417d-adc4-aadf837cc5b7
+
+	column fact_procedure_occurrence_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5807f471-40dc-485f-8654-157d98636c16
+		summarizeBy: none
+		sourceColumn: fact_procedure_occurrence_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column pipeline_run_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 99a4a1ca-005c-4095-8d13-23489931b1dd
+		summarizeBy: none
+		sourceColumn: pipeline_run_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column patient_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 751b8b1d-c929-46b8-814f-bbab7091ea32
+		summarizeBy: none
+		sourceColumn: patient_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column claim_created_date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 72400ea6-b480-4cc4-982b-a5b30e086de0
+		summarizeBy: none
+		sourceColumn: claim_created_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column procedure_date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7a434afa-8171-47f0-a497-c0f840393ad5
+		summarizeBy: none
+		sourceColumn: procedure_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column procedure_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8b0a6914-f1a1-463c-9d1d-8482dd616b9e
+		summarizeBy: none
+		sourceColumn: procedure_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column eob_id
+		dataType: string
+		lineageTag: 3a7b4365-e3c1-44fe-9be3-a6a8c3a3aff4
+		summarizeBy: none
+		sourceColumn: eob_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column procedure_sequence
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a1da1da2-2f77-4b6c-a2c4-4a21c1bcfeaa
+		summarizeBy: none
+		sourceColumn: procedure_sequence
+
+		annotation SummarizationSetBy = Automatic
+
+	column procedure_row_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 814b9ee8-eee6-4444-a133-73f2a92c7160
+		summarizeBy: none
+		sourceColumn: procedure_row_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_record_hash
+		dataType: string
+		isHidden
+		lineageTag: 234cab98-a49a-464f-84a9-6e42925f95ab
+		summarizeBy: none
+		sourceColumn: source_record_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics fact_procedure_occurrence' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_fact_procedure_occurrence = Source{[Schema="analytics",Item="fact_procedure_occurrence"]}[Data]
+				in
+				    analytics_fact_procedure_occurrence
+
+	annotation PBI_ResultType = Table
+

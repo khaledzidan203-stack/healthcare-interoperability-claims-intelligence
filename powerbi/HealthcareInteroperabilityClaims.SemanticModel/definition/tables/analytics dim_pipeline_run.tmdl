@@ -1,0 +1,69 @@
+table 'analytics dim_pipeline_run'
+	isHidden
+	lineageTag: a6969d33-5280-4613-ba5b-dfa50e8befaa
+
+	column pipeline_run_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 49a03579-1658-437e-b0b2-44c7decb4ecb
+		summarizeBy: none
+		sourceColumn: pipeline_run_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column pipeline_run_id
+		dataType: string
+		isHidden
+		lineageTag: d9ba6adf-55a5-433f-aaf5-25576aec84da
+		summarizeBy: none
+		sourceColumn: pipeline_run_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column run_status
+		dataType: string
+		lineageTag: 48aa7de8-9706-42e4-a119-df1ea7bc2e8f
+		summarizeBy: none
+		sourceColumn: run_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column raw_manifest_sha256
+		dataType: string
+		isHidden
+		lineageTag: 984532f4-0bf3-410f-8854-9fd222111d21
+		summarizeBy: none
+		sourceColumn: raw_manifest_sha256
+
+		annotation SummarizationSetBy = Automatic
+
+	column staging_manifest_sha256
+		dataType: string
+		isHidden
+		lineageTag: 49395a40-7988-4a31-80a5-f47fe450af4b
+		summarizeBy: none
+		sourceColumn: staging_manifest_sha256
+
+		annotation SummarizationSetBy = Automatic
+
+	column loaded_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3982d426-f77a-4073-99b4-ec524b4fd5f2
+		summarizeBy: none
+		sourceColumn: loaded_at
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analytics dim_pipeline_run' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "healthcare_interoperability_claims"),
+				    analytics_dim_pipeline_run = Source{[Schema="analytics",Item="dim_pipeline_run"]}[Data]
+				in
+				    analytics_dim_pipeline_run
+
+	annotation PBI_ResultType = Table
+
