@@ -1,6 +1,6 @@
-# Portfolio Demo Walkthrough — 60–90 seconds
+# Technical Project Walkthrough — 60–90 seconds
 
-This script is designed for recruiter screens, interviews and LinkedIn/GitHub walkthroughs. It is presentation-only documentation and does not change the validated project implementation.
+This guide provides a concise technical walkthrough of the project architecture, analytical delivery and validation controls. It is presentation-only documentation and does not change the validated project implementation.
 
 ## 0–10 sec — What the project is
 
@@ -26,9 +26,9 @@ The project includes 94 regression tests, a release auditor and GitHub Actions v
 
 The main value of the project is not just the dashboard. It demonstrates end-to-end analytics engineering across interoperability, dimensional modeling, data quality, governance, PostgreSQL, Power BI and CI while keeping the analytical logic reproducible and source-controlled.
 
-## Suggested recording order
+## Suggested walkthrough order
 
-1. Repository README title and recruiter quick scan.
+1. Repository title and Project at a Glance section.
 2. Mermaid architecture diagram.
 3. Executive Overview screenshot/report page.
 4. Claims Activity.
@@ -37,10 +37,10 @@ The main value of the project is not just the dashboard. It demonstrates end-to-
 7. Terminology & Governance.
 8. GitHub Actions badge / validation section.
 
-## Recording notes
+## Presentation notes
 
-- Keep the final video between 60 and 90 seconds.
+- Keep the walkthrough between 60 and 90 seconds.
 - Do not present sandbox/synthetic data as real patient or production CMS data.
 - Do not describe restricted financial primitives as consolidated financial KPIs.
 - Avoid showing private `.env`, runtime data, credentials or local caches.
-- Prefer one concise sentence per screen; the GitHub repository contains the detailed evidence for technical reviewers.
+- Prefer one concise sentence per screen; the repository contains the detailed evidence and reproducibility documentation.
