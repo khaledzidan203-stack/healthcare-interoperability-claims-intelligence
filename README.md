@@ -22,6 +22,17 @@ The project demonstrates how nested healthcare interoperability resources can be
 
 **Best review path:** start with the dashboard preview below, then review the architecture, engineering highlights and validation evidence.
 
+## What this project proves
+
+- I can work with **healthcare interoperability data** rather than only flat analytical extracts.
+- I can preserve **grain, lineage and run identity** across a multi-stage analytics pipeline.
+- I can design a **PostgreSQL analytical model** that separates claims, clinical occurrences, care-team, supporting-information and financial grains.
+- I can build **data-quality and reconciliation controls** that fail closed instead of hiding source uncertainty.
+- I can deliver a governed **Power BI semantic model and PBIR report** from validated analytical structures.
+- I can package analytics as a **reviewable engineering product** with automated tests, CI, documentation and publication controls.
+
+**60–90 second portfolio walkthrough:** [demo script for recruiter screens and interviews](docs/PORTFOLIO_DEMO_WALKTHROUGH.md).
+
 ## Why this project matters
 
 Healthcare claims data is not naturally analytics-ready. FHIR resources contain nested diagnoses, procedures, claim items, care-team participants, financial components and references at different grains. Flattening them into one table can create duplicated counts, invalid joins and misleading financial totals.
@@ -179,6 +190,7 @@ For the complete evidence record, limitations and provenance, see [Release Valid
 - [Architecture](docs/architecture/RELEASE_ARCHITECTURE.md)
 - [Engineering decisions](docs/architecture/ENGINEERING_DECISIONS.md)
 - [Portfolio case study](docs/PORTFOLIO_CASE_STUDY.md)
+- [60–90 second portfolio demo walkthrough](docs/PORTFOLIO_DEMO_WALKTHROUGH.md)
 - [Source-derived data dictionary](docs/semantic/RELEASE_DATA_DICTIONARY.md)
 - [Repository map](docs/REPOSITORY_MAP.md)
 - [Setup and reproducibility](docs/SETUP.md)
