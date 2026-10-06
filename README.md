@@ -2,9 +2,64 @@
 
 [![Source release checks](https://github.com/khaledzidan203-stack/healthcare-interoperability-claims-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/khaledzidan203-stack/healthcare-interoperability-claims-intelligence/actions/workflows/ci.yml)
 
-A production-style healthcare interoperability and claims analytics engineering portfolio project using **CMS Blue Button sandbox/synthetic FHIR data**.
+A production-style **healthcare interoperability, claims analytics and analytics-engineering portfolio project** built on **CMS Blue Button sandbox/synthetic FHIR data**.
 
-The engineering objective is to turn nested claims resources into traceable analytical facts while preserving source meaning, run identity and uncertainty. The result connects a standard-library Python pipeline, PostgreSQL analytical model and source-controlled Power BI application. It demonstrates engineering practice without production, clinical or financial-outcome claims.
+It demonstrates how nested healthcare interoperability resources can be converted into governed, traceable analytical facts and delivered through **Python, PostgreSQL, dimensional modeling, data-quality controls, Power BI, DAX, PBIP/PBIR/TMDL and GitHub Actions**.
+
+> **Portfolio scope:** synthetic sandbox data only. The project demonstrates engineering, governance and analytical design; it does not claim production CMS access, clinical inference or consolidated financial outcomes.
+
+## Why this project matters
+
+Healthcare claims data is not naturally analytics-ready. FHIR resources contain nested diagnoses, procedures, claim items, care-team participants, financial components and references at different grains. Flattening them into one table can create duplicated counts, invalid joins and misleading financial totals.
+
+This project addresses that problem by preserving source meaning, separating analytical grains, retaining lineage and uncertainty, validating each stage, and exposing the governed result through a source-controlled Power BI semantic model and report.
+
+## What I built
+
+- **FHIR interoperability pipeline** using CMS Blue Button sandbox data with OAuth 2.0 Authorization Code + **PKCE S256**.
+- **Governed ingestion and traceability** with run-scoped persistence, page hashes, resource-key reconciliation and source lineage.
+- **Canonical claims model** separating claims, items, diagnoses, procedures, care-team, supporting-information and financial grains.
+- **PostgreSQL analytical layer** with governed schemas, integrity controls, reconciliation and run isolation.
+- **Power BI semantic model** using TMDL/DAX with 22 business tables, a disconnected `_Measures` table and 50 relationships.
+- **Seven-page PBIR report** covering executive activity, claims, clinical coding, provider/payer views, terminology/governance and methodology.
+- **Automated validation and CI** with 94 regression tests plus a release auditor executed through GitHub Actions.
+- **Security/publication controls** that keep credentials and runtime extracts private while preserving reproducible public source and validation evidence.
+
+## Technology stack
+
+**Python 3.13 · PostgreSQL · SQL · FHIR · CMS Blue Button · OAuth 2.0 / PKCE · Power BI · DAX · Power Query · PBIP · PBIR · TMDL · Git · GitHub Actions**
+
+## Dashboard preview
+
+### Executive Overview
+
+Activity counts and claim-type mix within the governed portfolio snapshot.
+
+![Executive Overview](screen_shot/2_Executive%20Overview.png)
+
+### Claims Activity
+
+Claims over time and source status, use and outcome categories.
+
+![Claims Activity](screen_shot/3_Claims%20Activity.png)
+
+### Clinical & Coding
+
+Diagnosis and procedure occurrences with explicit mapping-pending status.
+
+![Clinical and Coding](screen_shot/4_Clinical%20%26%20Coding.png)
+
+### Provider & Payer
+
+Care-team activity and provider/payer identity/display availability while preserving source blanks.
+
+![Provider and Payer](screen_shot/5_Provider%20%26%20Payer.png)
+
+### Terminology & Governance
+
+Source categories, terminology mapping states and governance controls.
+
+![Terminology and Governance](screen_shot/6_Terminology%20%26%20Governance.png)
 
 ## Architecture
 
@@ -23,14 +78,22 @@ flowchart LR
   REPORT --> AUDIT[Release evidence]
 ```
 
-## Engineering capabilities
+## Engineering highlights
 
-- **Interoperability:** Authorization Code + PKCE, state and granted-scope checks, validated pagination links and bounded retries for Patient, Coverage and ExplanationOfBenefit.
-- **Traceability:** run-scoped persistence, page hashes, canonical child sequences and source lineage. Extraction completeness follows next links and resource-key reconciliation because observed sandbox Bundle totals were unreliable.
-- **Modeling:** separate claim, item, diagnosis, procedure, care-team, supporting-info and financial grains; contained and external references normalized without inventing identity from display text.
-- **Governance:** terminology mapping status stays visible; financial facts remain separate. Transaction rendering and post-load checks cover duplicate keys, wrong-run records and hash/multiset reconciliation.
-- **Analytics:** PostgreSQL dimensions and facts feed TMDL and seven PBIR pages. A hidden, locked report filter selects one governed run; all nine measures require one run in context.
-- **Release engineering:** a read-only auditor checks source, publication boundaries, fixture hashes, local links, model/report inventories and the 94-test regression suite. GitHub Actions runs reproducible source gates.
+### Interoperability
+Authorization Code + PKCE, state and granted-scope checks, validated pagination links and bounded retries for Patient, Coverage and ExplanationOfBenefit.
+
+### Grain and modeling discipline
+Claims, claim items, diagnosis occurrences, procedures, care-team participants, supporting information and financial elements remain separate where their business grains differ. Contained and external references are normalized without inventing identity from display text.
+
+### Traceability and run isolation
+Extraction is run-scoped, source pages are hashed, child sequences are canonicalized, and cross-run aggregation is prohibited. A hidden locked report filter selects one governed run and all nine report measures require one run in context.
+
+### Governance and data quality
+Terminology mapping status remains visible rather than being silently coerced. Financial facts remain separated by concept/currency context. Post-load checks cover duplicate keys, wrong-run records and hash/multiset reconciliation.
+
+### Release engineering
+The public repository includes reproducible source checks, fixture validation, documentation-link checks, model/report inventory checks and a GitHub Actions workflow that runs the release auditor on Python 3.13.
 
 ## Verified source inventory
 
@@ -42,9 +105,25 @@ flowchart LR
 | Semantic model | 22 business tables plus disconnected `_Measures`; 9 measures; 50 relationships |
 | Report | 7 pages, 77 visuals; 1920 × 1080, FitToPage |
 
-The report selects `snapshot_20261001_portfolio_4patients_v1`. The supplied Desktop screenshots show **4 patients, 24 claims, 87 items, 98 diagnosis occurrences, 12 procedure occurrences, 72 care-team occurrences and 460 supporting-info occurrences**. These are bounded snapshot presentation evidence, not a fresh database recount. Private runtime directories were inaccessible for recount during this audit. Cross-run aggregation is prohibited.
+The governed report snapshot is `snapshot_20261001_portfolio_4patients_v1`. The preserved Desktop screenshots show **4 patients, 24 claims, 87 items, 98 diagnosis occurrences, 12 procedure occurrences, 72 care-team occurrences and 460 supporting-info occurrences**. These numbers are presentation evidence for that bounded snapshot, not population-level findings.
 
-Six measures count activity. Three hidden financial measures are restricted primitives requiring one run, one concept and one currency; they are not consolidated business KPIs. Coverage remains governed upstream and excluded from semantic relationships.
+Six measures count activity. Three hidden financial measures are restricted primitives requiring one run, one concept and one currency; they are intentionally not presented as consolidated business KPIs. Coverage remains governed upstream and excluded from semantic relationships.
+
+## Full report walkthrough
+
+### INDEX
+
+Navigation across six analytical and governance sections.
+
+![INDEX](screen_shot/1_INDEX.png)
+
+### Methodology & Validation
+
+Methodology, lineage, semantic scope and validation narrative.
+
+![Methodology and Validation](screen_shot/7_Methodology%20%26%20Validation.png)
+
+The seven published screenshots are preserved as release evidence. Some captures contain selection handles or blank labels; blank labels represent unavailable display information, not inferred identity.
 
 ## Review and reproduce
 
@@ -56,70 +135,39 @@ python -B -m unittest discover -s tests
 python -B scripts/release/release_audit.py
 ```
 
-Use Python 3.13 for release checks. No pip installation is needed. See [setup](docs/SETUP.md) for the actual CLI, SQL prerequisites and Power BI instructions. The public checkout supports source checks and fixture tests; it omits the private dataset and cached model needed to reproduce populated screenshots directly.
+Use Python 3.13 for release checks. No pip installation is required for the current runtime path. See [setup](docs/SETUP.md) for the implemented CLI, SQL prerequisites and Power BI instructions.
 
-## Report walkthrough
+The public checkout supports source checks and fixture tests. Private runtime datasets, credentials and cached Power BI model state are intentionally excluded.
 
-All seven original supplied Desktop screenshots are preserved unchanged. Selection handles and blank labels in some captures are part of the evidence. Blank labels indicate unavailable display information, not an established identity.
+## Validation status
 
-### INDEX
+- **94/94 pipeline regression tests passed** in the release validation baseline.
+- The repository includes a **read-only release auditor** for publication boundaries, source integrity, JSON, fixture hashes, links and model/report inventories.
+- **GitHub Actions passed** for the published source validation workflow.
+- Power BI source and screenshots are preserved against the approved baseline; detailed PBIR/Desktop evidence boundaries are documented separately.
 
-Navigation across six analytical and governance sections.
+For the complete evidence record, limitations and provenance, see [Release Validation Evidence](docs/validation/RELEASE_VALIDATION_EVIDENCE.md) and the [Release Checklist](docs/validation/RELEASE_CHECKLIST.md).
 
-![INDEX](screen_shot/1_INDEX.png)
+## Technical documentation
 
-### Executive Overview
+- [Architecture](docs/architecture/RELEASE_ARCHITECTURE.md)
+- [Engineering decisions](docs/architecture/ENGINEERING_DECISIONS.md)
+- [Portfolio case study](docs/PORTFOLIO_CASE_STUDY.md)
+- [Source-derived data dictionary](docs/semantic/RELEASE_DATA_DICTIONARY.md)
+- [Repository map](docs/REPOSITORY_MAP.md)
+- [Setup and reproducibility](docs/SETUP.md)
+- [Security](SECURITY.md)
+- [Public source manifest](docs/source/PUBLIC_SOURCE_MANIFEST.md)
+- [CMS sample FHIR provenance](docs/source/CMS_SAMPLE_FHIR_PROVENANCE.md)
 
-Activity counts and claim-type mix within the governed snapshot.
+## Important limitations
 
-![Executive Overview](screen_shot/2_Executive%20Overview.png)
+Clinical terminology mappings may remain pending. The synthetic sample is not intended for population inference, clinical decisions, production claims adjudication, consolidated financial conclusions or unsupported scalability claims. Production CMS access is outside the demonstrated scope.
 
-### Claims Activity
-
-Claims over time and source status, use and outcome categories.
-
-![Claims Activity](screen_shot/3_Claims%20Activity.png)
-
-### Clinical & Coding
-
-Diagnosis and procedure occurrences with explicit mapping-pending status.
-
-![Clinical and Coding](screen_shot/4_Clinical%20%26%20Coding.png)
-
-### Provider & Payer
-
-Care-team activity and provider/payer identity and display availability; source blanks remain visible.
-
-![Provider and Payer](screen_shot/5_Provider%20%26%20Payer.png)
-
-### Terminology & Governance
-
-Source categories and terminology mapping gates, including supporting information.
-
-![Terminology and Governance](screen_shot/6_Terminology%20%26%20Governance.png)
-
-### Methodology & Validation
-
-Methodology, lineage, semantic scope and supplied validation narrative.
-
-![Methodology and Validation](screen_shot/7_Methodology%20%26%20Validation.png)
-
-## Technical reading
-
-- [Release evidence](docs/validation/RELEASE_VALIDATION_EVIDENCE.md) and [release checklist](docs/validation/RELEASE_CHECKLIST.md)
-- [Architecture](docs/architecture/RELEASE_ARCHITECTURE.md) and [engineering decisions](docs/architecture/ENGINEERING_DECISIONS.md)
-- [Case study](docs/PORTFOLIO_CASE_STUDY.md) and [source-derived data dictionary](docs/semantic/RELEASE_DATA_DICTIONARY.md)
-- [Repository map](docs/REPOSITORY_MAP.md) and [publication plan](docs/validation/PUBLICATION_PLAN.md)
-- [Security](SECURITY.md), [public source manifest](docs/source/PUBLIC_SOURCE_MANIFEST.md) and [CMS fixture provenance](docs/source/CMS_SAMPLE_FHIR_PROVENANCE.md)
-
-## Release limits
-
-PBIR and Desktop validation are carried forward from the owner-attested approved baseline after verifying byte identity of all 121 Power BI source files and seven screenshots. The prior PBIR result was exit 0, zero errors and one `PBIR_SCHEMA_UNREACHABLE` warning. Fresh rerun remains blocked by local PowerShell security policy; no bypass was used. The warning concerns remote schema availability, not a structural error. See the [preservation evidence](docs/validation/RELEASE_VALIDATION_EVIDENCE.md) for provenance and limits. Source CI does not run Desktop, PostgreSQL or fresh PBIR validation.
-
-Clinical mappings may remain pending. The synthetic sample cannot support population inference, clinical decisions, consolidated financial conclusions or scalability claims. This project is not a claims adjudication engine or production CMS integration.
+Detailed validation boundaries—including preserved Power BI runtime evidence and environment-specific PBIR validation constraints—remain documented in the release evidence rather than being hidden from reviewers.
 
 ## Attribution and license
 
-CMS reference files and fixtures retain [source attribution and pinned hashes](docs/source/PUBLIC_SOURCE_MANIFEST.md). Dictionary build `2.248.0` is a historical reference, not a claim about the latest CMS dictionary. CMS describes its testing data in [Explore the API](https://bluebutton.cms.gov/api-documentation/explore-the-api/).
+CMS reference files and fixtures retain [source attribution and pinned hashes](docs/source/PUBLIC_SOURCE_MANIFEST.md). Dictionary build `2.248.0` is retained as a historical reference rather than a claim about the latest CMS dictionary. CMS sandbox/API documentation remains the authoritative external reference for the source environment.
 
-Original project code and documentation are licensed under the [MIT License](LICENSE), copyright 2026 Khaled Zidan. External CMS and Power BI generated resources retain their original provenance; see [third-party notices](THIRD_PARTY_NOTICES.md). The project license does not expand rights over third-party material.
+Original project code and documentation are licensed under the [MIT License](LICENSE), copyright 2026 Khaled Zidan. External CMS and Power BI generated resources retain their original provenance; see [third-party notices](THIRD_PARTY_NOTICES.md).
