@@ -12,9 +12,9 @@ The project demonstrates how nested healthcare interoperability resources can be
 
 > **Portfolio scope:** synthetic sandbox data only. The project demonstrates engineering, governance and analytical design; it does not claim production CMS access, clinical inference or consolidated financial outcomes.
 
-## Recruiter quick scan
+## Project at a glance
 
-| Area | What this project demonstrates |
+| Area | Current implementation |
 |---|---|
 | Business problem | Turning nested claims/interoperability data into trustworthy analytical facts without double counting or invented identity |
 | Healthcare data | CMS Blue Button, FHIR Patient, Coverage and ExplanationOfBenefit resources |
@@ -24,18 +24,18 @@ The project demonstrates how nested healthcare interoperability resources can be
 | Engineering quality | 94 regression tests, release auditor, GitHub Actions, security/publication controls |
 | Core stack | Python 3.13 · PostgreSQL · SQL · FHIR · OAuth 2.0/PKCE · Power BI · DAX · PBIP/PBIR · TMDL |
 
-**Best review path:** start with the dashboard preview below, then review the architecture, engineering highlights and validation evidence.
+**Suggested review path:** start with the dashboard preview below, then review the architecture, engineering highlights and validation evidence.
 
-## What this project proves
+## Engineering scope
 
-- I can work with **healthcare interoperability data** rather than only flat analytical extracts.
-- I can preserve **grain, lineage and run identity** across a multi-stage analytics pipeline.
-- I can design a **PostgreSQL analytical model** that separates claims, clinical occurrences, care-team, supporting-information and financial grains.
-- I can build **data-quality and reconciliation controls** that fail closed instead of hiding source uncertainty.
-- I can deliver a governed **Power BI semantic model and PBIR report** from validated analytical structures.
-- I can package analytics as a **reviewable engineering product** with automated tests, CI, documentation and publication controls.
+- **Healthcare interoperability data processing** beyond flat analytical extracts.
+- **Grain, lineage and run-identity preservation** across a multi-stage analytics pipeline.
+- **PostgreSQL analytical modeling** that separates claims, clinical occurrences, care-team, supporting-information and financial grains.
+- **Data-quality and reconciliation controls** that fail closed instead of hiding source uncertainty.
+- **Governed Power BI semantic modeling and PBIR reporting** over validated analytical structures.
+- **Reviewable engineering delivery** with automated tests, CI, documentation and publication controls.
 
-**60–90 second portfolio walkthrough:** [demo script for recruiter screens and interviews](docs/PORTFOLIO_DEMO_WALKTHROUGH.md).
+**60–90 second technical walkthrough:** [guided project walkthrough](docs/PORTFOLIO_DEMO_WALKTHROUGH.md).
 
 ## Why this project matters
 
@@ -194,7 +194,7 @@ For the complete evidence record, limitations and provenance, see [Release Valid
 - [Architecture](docs/architecture/RELEASE_ARCHITECTURE.md)
 - [Engineering decisions](docs/architecture/ENGINEERING_DECISIONS.md)
 - [Portfolio case study](docs/PORTFOLIO_CASE_STUDY.md)
-- [60–90 second portfolio demo walkthrough](docs/PORTFOLIO_DEMO_WALKTHROUGH.md)
+- [60–90 second project walkthrough](docs/PORTFOLIO_DEMO_WALKTHROUGH.md)
 - [Source-derived data dictionary](docs/semantic/RELEASE_DATA_DICTIONARY.md)
 - [Repository map](docs/REPOSITORY_MAP.md)
 - [Setup and reproducibility](docs/SETUP.md)
