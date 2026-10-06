@@ -2,6 +2,10 @@
 
 [![Source release checks](https://github.com/khaledzidan203-stack/healthcare-interoperability-claims-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/khaledzidan203-stack/healthcare-interoperability-claims-intelligence/actions/workflows/ci.yml)
 
+![Healthcare Interoperability & Claims Intelligence Platform](docs/assets/healthcare-interoperability-hero.jpg)
+
+> Portfolio visual summary of the project architecture, stack and analytical delivery.
+
 A production-style **healthcare interoperability, claims analytics and analytics-engineering portfolio project** built on **CMS Blue Button sandbox/synthetic FHIR data**.
 
 The project demonstrates how nested healthcare interoperability resources can be converted into governed, traceable analytical facts and delivered through **Python, PostgreSQL, dimensional modeling, data-quality controls, Power BI, DAX, PBIP/PBIR/TMDL and GitHub Actions**.
