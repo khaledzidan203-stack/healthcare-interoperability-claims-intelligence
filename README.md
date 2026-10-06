@@ -2,7 +2,7 @@
 
 [![Source release checks](https://github.com/khaledzidan203-stack/healthcare-interoperability-claims-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/khaledzidan203-stack/healthcare-interoperability-claims-intelligence/actions/workflows/ci.yml)
 
-![Healthcare Interoperability & Claims Intelligence Platform](docs/assets/healthcare-interoperability-hero.jpg)
+![Healthcare Interoperability & Claims Intelligence Platform](docs/assets/Healthcare%20Interoperability%20Analytics%20Platform.png)
 
 > Portfolio visual summary of the project architecture, stack and analytical delivery.
 
