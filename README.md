@@ -4,9 +4,23 @@
 
 A production-style **healthcare interoperability, claims analytics and analytics-engineering portfolio project** built on **CMS Blue Button sandbox/synthetic FHIR data**.
 
-It demonstrates how nested healthcare interoperability resources can be converted into governed, traceable analytical facts and delivered through **Python, PostgreSQL, dimensional modeling, data-quality controls, Power BI, DAX, PBIP/PBIR/TMDL and GitHub Actions**.
+The project demonstrates how nested healthcare interoperability resources can be converted into governed, traceable analytical facts and delivered through **Python, PostgreSQL, dimensional modeling, data-quality controls, Power BI, DAX, PBIP/PBIR/TMDL and GitHub Actions**.
 
 > **Portfolio scope:** synthetic sandbox data only. The project demonstrates engineering, governance and analytical design; it does not claim production CMS access, clinical inference or consolidated financial outcomes.
+
+## Recruiter quick scan
+
+| Area | What this project demonstrates |
+|---|---|
+| Business problem | Turning nested claims/interoperability data into trustworthy analytical facts without double counting or invented identity |
+| Healthcare data | CMS Blue Button, FHIR Patient, Coverage and ExplanationOfBenefit resources |
+| Data engineering | Governed ingestion, run isolation, canonical grains, reference normalization, PostgreSQL analytical modeling |
+| Data quality | Reconciliation, duplicate/wrong-run controls, source lineage, terminology state preservation |
+| BI / analytics | TMDL semantic model, governed DAX, seven-page PBIR Power BI report |
+| Engineering quality | 94 regression tests, release auditor, GitHub Actions, security/publication controls |
+| Core stack | Python 3.13 · PostgreSQL · SQL · FHIR · OAuth 2.0/PKCE · Power BI · DAX · PBIP/PBIR · TMDL |
+
+**Best review path:** start with the dashboard preview below, then review the architecture, engineering highlights and validation evidence.
 
 ## Why this project matters
 
@@ -24,6 +38,18 @@ This project addresses that problem by preserving source meaning, separating ana
 - **Seven-page PBIR report** covering executive activity, claims, clinical coding, provider/payer views, terminology/governance and methodology.
 - **Automated validation and CI** with 94 regression tests plus a release auditor executed through GitHub Actions.
 - **Security/publication controls** that keep credentials and runtime extracts private while preserving reproducible public source and validation evidence.
+
+## Analytical questions supported
+
+The governed model and report support descriptive questions such as:
+
+- How much claims activity exists in the selected governed run?
+- How does activity vary over time and by source status, use and outcome categories?
+- Which diagnosis and procedure occurrences are represented, and what is their terminology-mapping state?
+- What provider, payer and care-team information is present versus unavailable in source display data?
+- Which records remain mapping-pending or require governance review?
+
+These are **bounded analytical questions for the synthetic portfolio snapshot**, not clinical, actuarial or population-level conclusions.
 
 ## Technology stack
 
